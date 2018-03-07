@@ -1,3 +1,3 @@
 # hangoutsidesf
 
-[Style Guide](STYLE_GUIDE.md)
+[Contributing Guidelines](CONTRIBUTING.md)

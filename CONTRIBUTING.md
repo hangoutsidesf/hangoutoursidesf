@@ -50,12 +50,12 @@ git remote add upstream https://github.com/organization/<NAME_OF_REPO>.git
 ### Cut a namespaced feature branch from master
 
 Your branch should follow this naming convention:
-  - bug-<YOUR_MODIFICATION>
-  - feature-<YOUR_MODIFICATION>
-  - test-<YOUR_MODIFICATION>
-  - doc-<YOUR_MODIFICATION>
-  - refactor-<YOUR_MODIFICATION>
-  - design-<YOUR_MODIFICATION>
+  - bug/<YOUR_MODIFICATION>
+  - feature/<YOUR_MODIFICATION>
+  - test/<YOUR_MODIFICATION>
+  - doc/<YOUR_MODIFICATION>
+  - refactor/<YOUR_MODIFICATION>
+  - design/<YOUR_MODIFICATION>
 
 These commands will help you do this:
 
