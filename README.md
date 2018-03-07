@@ -1,1 +1,3 @@
-# hangoutoursidesf
+# hangoutsidesf
+
+[Contributing Guidelines](CONTRIBUTING.md)
