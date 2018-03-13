@@ -60,7 +60,6 @@ Your branch should follow this naming convention:
 These commands will help you do this:
 
 ``` bash
-
 # Creates your branch and brings you there
 git checkout -b `your-branch-name`
 ```
@@ -93,6 +92,12 @@ your code merged into the main repo. Step 1 is to rebase upstream
 changes to the master branch into yours by running this command
 from your branch:
 
+##### Internal Developer
+```bash
+git pull --rebase origin development
+```
+
+##### External Developer
 ```bash
 git pull --rebase upstream master
 ```
