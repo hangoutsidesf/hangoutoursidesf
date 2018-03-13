@@ -5,7 +5,7 @@
   "main": "server/index.js",
   "scripts": {
     "test": "jest",
-    "coverage": "npx jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "coverage": "npx jest --coverage && cat ./coverage/lcov.info | npx coveralls"
   },
   "repository": {
     "type": "git",
