@@ -2,12 +2,13 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
+require('dotenv').config();
 
 const SRC_DIR = path.join(__dirname, '/client/src');
 const DIST_DIR = path.join(__dirname, '/client/dist');
 
 module.exports = {
-  mode: 'development',
+  mode: process.env.NODE_ENV,
   entry: ['webpack-hot-middleware/client', `${SRC_DIR}/index.jsx`],
   output: {
     filename: 'bundle.js',
