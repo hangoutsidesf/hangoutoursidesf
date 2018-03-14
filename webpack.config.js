@@ -1,8 +1,6 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const webpack = require('webpack');
-require('dotenv').config();
+-const path = require('path');
+-const webpack = require('webpack');
+-require('dotenv').config();
 
 const SRC_DIR = path.join(__dirname, '/client/src');
 const DIST_DIR = path.join(__dirname, '/client/dist');
@@ -16,10 +14,6 @@ module.exports = {
     publicPath: '/client/dist',
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
-    new HtmlWebpackPlugin({
-      title: 'Development',
-    }),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
