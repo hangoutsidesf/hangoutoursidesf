@@ -7,6 +7,7 @@ const DIST_DIR = path.join(__dirname, '/client/dist');
 
 module.exports = {
   mode: process.env.NODE_ENV,
+  resolve: { extensions: ['.js', '.jsx', '.json'] },
   entry: ['webpack-hot-middleware/client', `${SRC_DIR}/index.jsx`],
   output: {
     filename: 'bundle.js',
