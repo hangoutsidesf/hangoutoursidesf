@@ -60,10 +60,6 @@ Your branch should follow this naming convention:
 These commands will help you do this:
 
 ``` bash
-<<<<<<< HEAD
-=======
-
->>>>>>> bdac15929454d93c847d66ba5e09460ad69fe5bb
 # Creates your branch and brings you there
 git checkout -b `your-branch-name`
 ```
