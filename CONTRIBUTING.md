@@ -99,7 +99,7 @@ git pull --rebase origin development
 
 ##### External Developer
 ```bash
-git pull --rebase upstream master
+git pull --rebase upstream development
 ```
 
 This will start the rebase process. You must commit all of your changes
