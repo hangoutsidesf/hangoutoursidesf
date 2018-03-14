@@ -4,7 +4,7 @@
   "description": "[Contributing Guidelines](CONTRIBUTING.md)",
   "main": "server/index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --config webpack.prod.config.js",
     "start:dev": "nodemon --exec babel-node server/index.js",
     "test": "jest",
     "coverage": "npx jest --coverage && cat ./coverage/lcov.info | npx coveralls"
