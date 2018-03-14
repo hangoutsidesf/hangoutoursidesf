@@ -1,6 +1,6 @@
--const path = require('path');
--const webpack = require('webpack');
--require('dotenv').config();
+import path from 'path';
+import webpack from 'webpack';
+import {} from 'dotenv/config';
 
 const SRC_DIR = path.join(__dirname, '/client/src');
 const DIST_DIR = path.join(__dirname, '/client/dist');
