@@ -1,6 +1,6 @@
 import {} from 'dotenv/config';
 
-const checkEnvironment = (app) => {
+const useWebpackMiddleware = (app) => {
   if (process.env.NODE_ENV === 'development') {
     const webpack = require('webpack');
     const webpackDevMiddleware = require('webpack-dev-middleware');
@@ -16,4 +16,4 @@ const checkEnvironment = (app) => {
   }
 };
 
-export default checkEnvironment;
+export default useWebpackMiddleware;

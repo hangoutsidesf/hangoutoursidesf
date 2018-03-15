@@ -1,8 +1,8 @@
 import express from 'express';
-import checkEnvironment from '../helpers/envCheck';
+import useWebpackMiddleware from '../helpers/useWebpackMiddleware';
 
 const app = express();
 
-checkEnvironment(app);
+useWebpackMiddleware(app);
 
 export default app;
