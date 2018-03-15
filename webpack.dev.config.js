@@ -1,5 +1,5 @@
 import path from 'path';
-import webpack from 'webpack';
+import webpack from 'webpack'; // eslint-disable-line import/no-extraneous-dependencies
 import {} from 'dotenv/config';
 
 const SRC_DIR = path.join(__dirname, '/client/src');
