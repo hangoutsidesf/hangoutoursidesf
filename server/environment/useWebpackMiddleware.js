@@ -2,6 +2,7 @@ import {} from 'dotenv/config';
 
 const useWebpackMiddleware = (app) => {
   // disable for global requires since airbnb doesn't like them being in a block
+  /* istanbul ignore next */
   if (process.env.NODE_ENV === 'development') {
     /* eslint-disable */
     const config = require('../../webpack.dev.config.js');
