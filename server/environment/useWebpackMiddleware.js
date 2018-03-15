@@ -1,18 +1,17 @@
 import {} from 'dotenv/config';
 
 const useWebpackMiddleware = (app) => {
+  // disable for global requires since airbnb doesn't like them being in a block
   if (process.env.NODE_ENV === 'development') {
-    const webpack = require('webpack');
-    const webpackDevMiddleware = require('webpack-dev-middleware');
-    const webpackHotMiddleware = require('webpack-hot-middleware');
-    const config = require('../webpack.dev.config.js');
-    const compiler = webpack(config);
-
-    app.use(webpackDevMiddleware(compiler, {
+    /* eslint-disable */
+    const config = require('../../webpack.dev.config.js');
+    const compiler = require('webpack')(config);
+    app.use(require('webpack-dev-middleware')(compiler, {
+      noInfo: true,
       publicPath: config.output.publicPath,
     }));
-
-    app.use(webpackHotMiddleware(compiler));
+    app.use(require('webpack-hot-middleware')(compiler));
+    /* eslint-enable */
   }
 };
 
