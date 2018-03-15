@@ -1,8 +1,13 @@
 import express from 'express';
-import useWebpackMiddleware from '../helpers/useWebpackMiddleware';
+
+import useWebpackMiddleware from './environment/useWebpackMiddleware';
+import useMorganMiddleware from './environment/useMorganMiddleware';
+import router from './routers/example';
 
 const app = express();
 
 useWebpackMiddleware(app);
+useMorganMiddleware(app);
+app.use('/test', router);
 
 export default app;
