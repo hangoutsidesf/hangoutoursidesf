@@ -1,5 +1,5 @@
 import express from 'express';
-import useWebpackMiddleware from '../helpers/useWebpackMiddleware';
+import useWebpackMiddleware from './environment/useWebpackMiddleware';
 
 const app = express();
 
