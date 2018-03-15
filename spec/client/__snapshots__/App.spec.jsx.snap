@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component App should match snapshot 1`] = `
+<div>
+  let's hang out in san francisco!
+</div>
+`;
