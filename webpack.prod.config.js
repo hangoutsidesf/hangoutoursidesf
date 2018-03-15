@@ -1,4 +1,5 @@
 const path = require('path');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 require('dotenv').config();
 
 const SRC_DIR = path.join(__dirname, '/client/src');
@@ -13,6 +14,11 @@ module.exports = {
     path: DIST_DIR,
     publicPath: '/client/dist',
   },
+  plugins: [
+    new UglifyJSPlugin({
+      sourceMap: true,
+    }),
+  ],
   module: {
     rules: [
       {
