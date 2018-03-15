@@ -2,7 +2,7 @@ import express from 'express';
 
 import useWebpackMiddleware from './environment/useWebpackMiddleware';
 import useMorganMiddleware from './environment/useMorganMiddleware';
-import router from './routers/test';
+import router from './routers/example';
 
 const app = express();
 
