@@ -57,7 +57,10 @@
       "!dist/**",
       "!.eslintrc.js",
       "!coverage/**",
-      "!src/index.js"
+      "!src/index.js",
+      "!webpack.*.config.js",
+      "!spec/**",
+      "!server/index.js"
     ]
   },
   "setupFiles": [
