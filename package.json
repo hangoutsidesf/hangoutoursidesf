@@ -55,6 +55,7 @@
     "react-leaflet": "^1.9.0"
   },
   "jest": {
+    "setupTestFrameworkScriptFile": "./spec/setup.js",
     "collectCoverageFrom": [
       "**/*.{js, jsx}",
       "!**/node_modules/**",
