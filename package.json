@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --config webpack.prod.config.js && babel server -d server-dist",
     "start:dev": "nodemon --exec NODE_ENV=development babel-node server/index.js",
-    "test": "jest",
+    "test": "jest --watch",
     "coverage": "npx jest --coverage && cat ./coverage/lcov.info | npx coveralls"
   },
   "repository": {
