@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Map, TileLayer } from 'react-leaflet';
+import ReactModal from 'react-modal';
 import { tileSet, SFGeo, zoomLevel, mapAttribution } from '../mapconfig';
 import MarkerCollection from './markerCollection';
 
@@ -13,7 +14,10 @@ export default class MapView extends Component {
       zoom: zoomLevel,
       parklets: [],
       error: '',
+      displayModal: false,
     };
+
+    this.toggleModal = this.toggleModal.bind(this);
   }
 
   componentDidMount() {
@@ -29,18 +33,26 @@ export default class MapView extends Component {
       .catch(err => this.setState({ error: err }));
   }
 
+  toggleModal(clickedMarkerData) {
+    this.setState({ displayModal: !this.state.displayModal });
+    return ('Pass me back into the modal component', clickedMarkerData);
+  }
+
   render() {
     const {
-      center, zoom, parklets, error,
+      center, zoom, parklets, error, displayModal,
     } = this.state;
     return (
-      <Map center={center} zoom={zoom} >
-        <TileLayer attribution={mapAttribution} url={tileSet} />
-        {error &&
-          <h3>Issue loading parklets: {error}</h3>
-        }
-        <MarkerCollection parklets={parklets} />
-      </Map>
+      <div>
+        <Map center={center} zoom={zoom} >
+          <TileLayer attribution={mapAttribution} url={tileSet} />
+          {error &&
+            <h3>Issue loading parklets: {error}</h3>
+          }
+          <MarkerCollection parklets={parklets} displayModal={this.toggleModal} />
+        </Map>
+        <ReactModal isOpen={displayModal} />
+      </div>
     );
   }
 }

@@ -2,11 +2,13 @@ import React from 'react';
 import Marker from './marker';
 
 const MarkerCollection = (props) => {
-  const markers = props.parklets.map(({ title, position }) => (
+  const { parklets, displayModal } = props;
+  const markers = parklets.map(({ title, position }) => (
     <Marker
-      key={position}
+      key={title + position[0]}
       position={position}
       detail={title}
+      displayModal={displayModal}
     />
   ));
 
