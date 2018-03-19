@@ -3,13 +3,11 @@ import { shallow } from 'enzyme';
 import fetchMock from 'fetch-mock';
 import dummyData from '../../client/parklets.json';
 import MapView from '../../client/src/mapView';
-import MarkerCollection from '../../client/src/markerCollection';
 import Marker from '../../client/src/marker';
 
 const url = 'https://data.sfgov.org/resource/6a7x-cttf.json';
 
 describe('Map loads on screen properly', () => {
-
   fetchMock.getOnce(url, {
     status: 200,
     body: dummyData,
@@ -34,7 +32,6 @@ describe('Map loads on screen properly', () => {
 });
 
 describe('Marker data loads after fetch', () => {
-
   fetchMock.restore();
   fetchMock.getOnce(url, {
     status: 200,
@@ -62,23 +59,3 @@ describe('Marker data loads after fetch', () => {
   });
 });
 
-describe('User clicks on a marker', () => {
-
-  fetchMock.restore();
-  fetchMock.getOnce(url, {
-    status: 200,
-    body: dummyData,
-  });
-
-  it('hides the leaflet popup', () => {
-
-  });
-
-  it('displays a modal on click', () => {
-
-  });
-
-  it('sends the selected marker data into the modal', () => {
-
-  });
-});
