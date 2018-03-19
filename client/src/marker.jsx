@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Marker as LMarker, Popup } from 'react-leaflet';
+
 import { icon } from '../mapconfig';
 
-const Marker = (props) => {
-  const { detail, position, displayModal } = props;
-
+const Marker = ({ detail, position, displayModal }) => {
   return (
     <LMarker position={position} icon={icon}>
       <Popup onOpen={() => displayModal(detail)} onClose={displayModal} className="customPopup" >

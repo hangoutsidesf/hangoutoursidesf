@@ -1,23 +1,12 @@
 import React, { Component } from 'react';
 import { Map, TileLayer } from 'react-leaflet';
 import ReactModal from 'react-modal';
+
 import { tileSet, SFGeo, zoomLevel, mapAttribution } from '../mapconfig';
 import MarkerCollection from './markerCollection';
+import fetchParklets from '../utils/fetchParklets';
 
 const PARKLETS_ENDPOINT = 'https://data.sfgov.org/resource/6a7x-cttf.json';
-
-const fetchData = (url) => {
-  const fetched = fetch(url)
-    .then(response => response.json())
-    .then(json => json.map(parklet => (
-      {
-        title: parklet.applicant,
-        position: [parklet.location.coordinates[1], parklet.location.coordinates[0]],
-      }
-    )));
-
-  return fetched;
-};
 
 export default class MapView extends Component {
   constructor() {
@@ -34,7 +23,7 @@ export default class MapView extends Component {
   }
 
   componentDidMount() {
-    fetchData(PARKLETS_ENDPOINT)
+    fetchParklets(PARKLETS_ENDPOINT)
       .then(data => this.setState({ parklets: data }))
       .catch(err => this.setState({ error: err }));
   }

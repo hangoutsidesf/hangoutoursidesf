@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import Marker from './marker';
 
-const MarkerCollection = (props) => {
-  const { parklets, displayModal } = props;
+const MarkerCollection = ({ parklets, displayModal }) => {
   const markers = parklets.map(({ title, position }) => (
     <Marker
       key={title + position[0]}

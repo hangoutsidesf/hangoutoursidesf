@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import fetchMock from 'fetch-mock';
+
 import dummyData from '../../client/parklets.json';
 import MapView from '../../client/src/mapView';
 import Marker from '../../client/src/marker';
@@ -47,10 +48,6 @@ describe('Marker data loads after fetch', () => {
   it('corrects the coordinates from lon-lat to lat-lon', () => {
     const firstParkletCoordinates = wrapper.state().parklets[0].position;
     expect(firstParkletCoordinates).toEqual([37.760648871591, -122.504335015934]);
-  });
-
-  xit('renders the error message when the fetch is unsuccessful', () => {
-
   });
 
   it('renders an icon for a given marker', () => {
