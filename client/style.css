@@ -2,3 +2,7 @@
   height: 98vh;
   width: 74vw;
 }
+
+.customPopup {
+  display: none,
+}

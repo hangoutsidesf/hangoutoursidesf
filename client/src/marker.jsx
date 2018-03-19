@@ -8,7 +8,7 @@ const Marker = (props) => {
 
   return (
     <LMarker position={position} icon={icon}>
-      <Popup onOpen={() => displayModal(detail)} onClose={displayModal}>
+      <Popup onOpen={() => displayModal(detail)} onClose={displayModal} className="customPopup" >
         <span>{detail}</span>
       </Popup>
     </LMarker>

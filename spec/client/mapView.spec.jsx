@@ -21,3 +21,31 @@ describe('Map loads on screen properly', () => {
     expect(wrapper.find('TileLayer').props().attribution).toBeDefined();
   });
 });
+
+describe('Marker data loads after fetch', () => {
+  it('contains all parklets', () => {
+
+  });
+
+  it('corrects the coordinates from lon-lat to lat-lon', () => {
+
+  });
+
+  it('renders the error message when the fetch is unsuccessful', () => {
+
+  });
+
+  it('renders an icon for a given marker', () => {
+
+  });
+});
+
+describe('User clicks on a marker', () => {
+  it('hides the leaflet popup', () => {
+
+  });
+
+  it('displays a modal on click', () => {
+
+  });
+});
