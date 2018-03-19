@@ -1,9 +1,18 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-
+import fetchMock from 'fetch-mock';
+import dummyData from '../../client/parklets.json';
 import MapView from '../../client/src/mapView';
 
+const url = 'https://data.sfgov.org/resource/6a7x-cttf.json';
+
 describe('Map loads on screen properly', () => {
+
+  fetchMock.getOnce(url, {
+    status: 200,
+    body: dummyData,
+  });
+
   const wrapper = shallow(<MapView />);
   it('centers on San Francisco', () => {
     const { center } = wrapper.state();
@@ -46,6 +55,10 @@ describe('User clicks on a marker', () => {
   });
 
   it('displays a modal on click', () => {
+
+  });
+
+  it('sends the selected marker data into the modal', () => {
 
   });
 });
