@@ -8,7 +8,7 @@ import fetchParklets from '../utils/fetchParklets';
 
 const PARKLETS_ENDPOINT = 'https://data.sfgov.org/resource/6a7x-cttf.json';
 
-export default class MapView extends Component {
+class MapView extends Component {
   constructor() {
     super();
     this.state = {
@@ -51,3 +51,5 @@ export default class MapView extends Component {
     );
   }
 }
+
+export default MapView;
