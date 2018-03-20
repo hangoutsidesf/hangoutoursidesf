@@ -25,15 +25,19 @@
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "coveralls": "^3.0.0",
     "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-react-16-adapter-setup": "^0.1.0",
     "eslint": "^4.18.2",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
+    "fetch-mock": "^6.3.0",
     "jest": "^22.4.2",
+    "node-fetch": "^2.1.1",
     "nodemon": "^1.17.2",
     "react-test-renderer": "^16.2.0",
     "supertest": "^3.0.0",
@@ -46,11 +50,16 @@
   "dependencies": {
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
+    "leaflet": "^1.3.1",
     "morgan": "^1.9.0",
+    "prop-types": "^15.6.1",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-leaflet": "^1.9.0",
+    "react-modal": "^3.3.2"
   },
   "jest": {
+    "setupTestFrameworkScriptFile": "./spec/setup.js",
     "collectCoverageFrom": [
       "**/*.{js, jsx}",
       "!**/node_modules/**",

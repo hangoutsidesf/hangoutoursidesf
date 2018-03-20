@@ -1,8 +1,9 @@
 import React from 'react';
+import MapView from './mapView';
 
 const App = () => (
   <div>
-    let's hang out in san francisco!
+    <MapView />
   </div>
 );
 

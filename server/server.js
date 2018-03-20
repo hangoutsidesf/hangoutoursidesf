@@ -8,8 +8,6 @@ import router from './routers/example';
 const app = express();
 const assets = path.resolve(__dirname, '../client/');
 
-console.log(assets);
-
 useWebpackMiddleware(app);
 useMorganMiddleware(app);
 app.use(express.static(assets));
