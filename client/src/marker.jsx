@@ -4,15 +4,13 @@ import { Marker as LMarker, Popup } from 'react-leaflet';
 
 import { icon } from '../mapconfig';
 
-const Marker = ({ detail, position, displayModal }) => {
-  return (
-    <LMarker position={position} icon={icon}>
-      <Popup onOpen={() => displayModal(detail)} onClose={displayModal} className="customPopup" >
-        <span>{detail}</span>
-      </Popup>
-    </LMarker>
-  );
-};
+const Marker = ({ detail, position, displayModal }) => (
+  <LMarker position={position} icon={icon}>
+    <Popup onOpen={() => displayModal(detail)} onClose={displayModal} className="customPopup" >
+      <span>{detail}</span>
+    </Popup>
+  </LMarker>
+);
 
 Marker.propTypes = {
   detail: PropTypes.string.isRequired,
