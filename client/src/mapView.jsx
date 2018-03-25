@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Map, TileLayer } from 'react-leaflet';
 import ReactModal from 'react-modal';
+import { Link } from 'react-router-dom';
 
 import { tileSet, SFGeo, zoomLevel, mapAttribution } from '../mapconfig';
 import MarkerCollection from './markerCollection';
@@ -17,9 +18,11 @@ class MapView extends Component {
       parklets: [],
       error: '',
       displayModal: false,
+      selectedMarker: '',
     };
 
     this.toggleModal = this.toggleModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   componentDidMount() {
@@ -29,13 +32,20 @@ class MapView extends Component {
   }
 
   toggleModal(clickedMarkerData) {
-    this.setState({ displayModal: !this.state.displayModal });
+    this.setState({
+      displayModal: !this.state.displayModal,
+      selectedMarker: clickedMarkerData,
+    });
     return ('Pass me back into the modal component', clickedMarkerData);
+  }
+
+  closeModal() {
+    this.setState({ displayModal: false });
   }
 
   render() {
     const {
-      center, zoom, parklets, error, displayModal,
+      center, zoom, parklets, error, displayModal, selectedMarker,
     } = this.state;
     return (
       <div>
@@ -46,7 +56,13 @@ class MapView extends Component {
           }
           <MarkerCollection parklets={parklets} displayModal={this.toggleModal} />
         </Map>
-        <ReactModal isOpen={displayModal} />
+        <ReactModal
+          isOpen={displayModal}
+        >
+          yoooo I am {selectedMarker}
+          <Link to={selectedMarker}>fixed</Link>
+          <button onClick={this.closeModal} >Close modal</button>
+        </ReactModal>
       </div>
     );
   }
