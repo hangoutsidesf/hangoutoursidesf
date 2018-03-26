@@ -4,8 +4,8 @@ import ReactModal from 'react-modal';
 import { Link, Route } from 'react-router-dom';
 
 import { tileSet, SFGeo, zoomLevel, mapAttribution } from '../mapconfig';
-import LinkedModal from './linkedModal';
 import MarkerCollection from './markerCollection';
+import LinkValidator from './linkValidator';
 import fetchParklets from '../utils/fetchParklets';
 import makeUrlFriendly from '../utils/makeUrlFriendly';
 
@@ -68,14 +68,7 @@ class MapView extends Component {
           <Link to={makeUrlFriendly(selectedMarker)}>link is: {`${selectedMarker}`}</Link>
           <button onClick={this.closeModal} >Close modal</button>
         </ReactModal>
-        <Route
-          path="/rollingoutinc"
-          render={({ match }) => {
-            const titleWithoutSlash = match.path.slice(1);
-            const linkedParkletData = parklets.filter(el => makeUrlFriendly(el.title) === titleWithoutSlash);
-            return <LinkedModal parklet={linkedParkletData} />;
-          }}
-        />
+        <LinkValidator component={LinkValidator} parklets={parklets} />
       </div>
     );
   }
