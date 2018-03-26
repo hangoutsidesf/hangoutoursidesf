@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { tileSet, SFGeo, zoomLevel, mapAttribution } from '../mapconfig';
 import MarkerCollection from './markerCollection';
 import fetchParklets from '../utils/fetchParklets';
+import makeUrlFriendly from '../utils/makeUrlFriendly';
 
 const PARKLETS_ENDPOINT = 'https://data.sfgov.org/resource/6a7x-cttf.json';
 
@@ -60,7 +61,7 @@ class MapView extends Component {
           isOpen={displayModal}
         >
           yoooo I am {selectedMarker}
-          <Link to={selectedMarker}>fixed</Link>
+          <Link to={makeUrlFriendly(selectedMarker)}>link is: {`${selectedMarker}`}</Link>
           <button onClick={this.closeModal} >Close modal</button>
         </ReactModal>
       </div>
