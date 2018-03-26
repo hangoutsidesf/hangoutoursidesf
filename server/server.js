@@ -13,4 +13,12 @@ useMorganMiddleware(app);
 app.use(express.static(assets));
 app.use('/test', router);
 
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/'), (err) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
+});
+
 export default app;

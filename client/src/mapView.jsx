@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Map, TileLayer } from 'react-leaflet';
 import ReactModal from 'react-modal';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 
 import { tileSet, SFGeo, zoomLevel, mapAttribution } from '../mapconfig';
 import MarkerCollection from './markerCollection';
@@ -9,6 +9,18 @@ import fetchParklets from '../utils/fetchParklets';
 import makeUrlFriendly from '../utils/makeUrlFriendly';
 
 const PARKLETS_ENDPOINT = 'https://data.sfgov.org/resource/6a7x-cttf.json';
+
+const customModal = ({ match, displayModal }) => {
+  return (
+    <Fragment>
+      <ReactModal isOpen={true} >
+        supp{console.log("match is: ", match)}
+        <button>Close modal</button>
+      </ReactModal>
+      <div>customModal rendered! </div>
+    </Fragment>
+  );
+};
 
 class MapView extends Component {
   constructor() {
@@ -50,6 +62,7 @@ class MapView extends Component {
     } = this.state;
     return (
       <div>
+        <Route path="/rollingoutinc" render={props => <div>props are {console.log(props)}</div>} />
         <Map center={center} zoom={zoom} >
           <TileLayer attribution={mapAttribution} url={tileSet} />
           {error &&
