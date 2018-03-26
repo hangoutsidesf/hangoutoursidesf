@@ -826,7 +826,7 @@ const latinMap = {
 };
 
 const makeUrlFriendly = (parkletTitle) => {
-  const specialChars = `',?!: _'" .`;
+  const specialChars = `',?!: _'".`;
   return parkletTitle
     .toLowerCase()
     .split('')
