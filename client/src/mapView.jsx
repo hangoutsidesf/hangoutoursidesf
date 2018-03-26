@@ -1,26 +1,15 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Map, TileLayer } from 'react-leaflet';
 import ReactModal from 'react-modal';
 import { Link, Route } from 'react-router-dom';
 
 import { tileSet, SFGeo, zoomLevel, mapAttribution } from '../mapconfig';
+import LinkedModal from './linkedModal';
 import MarkerCollection from './markerCollection';
 import fetchParklets from '../utils/fetchParklets';
 import makeUrlFriendly from '../utils/makeUrlFriendly';
 
 const PARKLETS_ENDPOINT = 'https://data.sfgov.org/resource/6a7x-cttf.json';
-
-const customModal = ({ match, displayModal }) => {
-  return (
-    <Fragment>
-      <ReactModal isOpen={true} >
-        supp{console.log("match is: ", match)}
-        <button>Close modal</button>
-      </ReactModal>
-      <div>customModal rendered! </div>
-    </Fragment>
-  );
-};
 
 class MapView extends Component {
   constructor() {
@@ -36,6 +25,7 @@ class MapView extends Component {
 
     this.toggleModal = this.toggleModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.openModal = this.openModal.bind(this);
   }
 
   componentDidMount() {
@@ -56,13 +46,16 @@ class MapView extends Component {
     this.setState({ displayModal: false });
   }
 
+  openModal() {
+    this.setState({ displayModal: true });
+  }
+
   render() {
     const {
       center, zoom, parklets, error, displayModal, selectedMarker,
     } = this.state;
     return (
       <div>
-        <Route path="/rollingoutinc" render={props => <div>props are {console.log(props)}</div>} />
         <Map center={center} zoom={zoom} >
           <TileLayer attribution={mapAttribution} url={tileSet} />
           {error &&
@@ -70,13 +63,19 @@ class MapView extends Component {
           }
           <MarkerCollection parklets={parklets} displayModal={this.toggleModal} />
         </Map>
-        <ReactModal
-          isOpen={displayModal}
-        >
-          yoooo I am {selectedMarker}
+        <ReactModal isOpen={displayModal}>
+          Title is: {selectedMarker}
           <Link to={makeUrlFriendly(selectedMarker)}>link is: {`${selectedMarker}`}</Link>
           <button onClick={this.closeModal} >Close modal</button>
         </ReactModal>
+        <Route
+          path="/rollingoutinc"
+          render={({ match }) => {
+            const titleWithoutSlash = match.path.slice(1);
+            const linkedParkletData = parklets.filter(el => makeUrlFriendly(el.title) === titleWithoutSlash);
+            return <LinkedModal parklet={linkedParkletData} />;
+          }}
+        />
       </div>
     );
   }
