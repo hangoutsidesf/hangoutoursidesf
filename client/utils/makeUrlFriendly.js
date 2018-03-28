@@ -826,7 +826,9 @@ const latinMap = {
 };
 
 const makeUrlFriendly = (parkletTitle) => {
+  /* eslint-disable */
   const specialChars = `',?!: _'".`;
+  /* eslint-enable */
   return parkletTitle
     .toLowerCase()
     .split('')

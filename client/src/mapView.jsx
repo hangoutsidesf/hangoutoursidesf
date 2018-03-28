@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Map, TileLayer } from 'react-leaflet';
 import ReactModal from 'react-modal';
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { tileSet, SFGeo, zoomLevel, mapAttribution } from '../mapconfig';
 import MarkerCollection from './markerCollection';
@@ -25,7 +25,6 @@ class MapView extends Component {
 
     this.toggleModal = this.toggleModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
-    this.openModal = this.openModal.bind(this);
   }
 
   componentDidMount() {
@@ -39,15 +38,10 @@ class MapView extends Component {
       displayModal: !this.state.displayModal,
       selectedMarker: clickedMarkerData,
     });
-    return ('Pass me back into the modal component', clickedMarkerData);
   }
 
   closeModal() {
     this.setState({ displayModal: false });
-  }
-
-  openModal() {
-    this.setState({ displayModal: true });
   }
 
   render() {
@@ -68,7 +62,7 @@ class MapView extends Component {
           <Link to={makeUrlFriendly(selectedMarker)}>link is: {`${selectedMarker}`}</Link>
           <button onClick={this.closeModal} >Close modal</button>
         </ReactModal>
-        <LinkValidator component={LinkValidator} parklets={parklets} />
+        <LinkValidator parklets={parklets} />
       </div>
     );
   }
