@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import LinkedModal from './linkedModal';
 import makeUrlFriendly from '../utils/makeUrlFriendly';
@@ -17,19 +18,26 @@ class LinkValidator extends Component {
 
   render() {
     const { parklets } = this.state;
+    const invalidUrlMessage = 'Oops, that\'s not a recognized page. In the meantime, explore these parklets!';
 
     return (
       <Route
         render={(props) => {
           const pathWithoutSlash = props.location.pathname.slice(1);
-          const parkletData = parklets.filter(el => makeUrlFriendly(el.title) === pathWithoutSlash);
+          const parkletHash = {};
+          const parkletsList = parklets.map(el => makeUrlFriendly(el.title));
+          parkletsList.forEach((el) => {
+            parkletHash[el] = true;
+          });
 
-          if (pathWithoutSlash && parkletData.length === 0) {
-            return <div>Oops, that's not a recognized page. In the meantime, explore these parklets!</div>;
-          }
-
-          if (parkletData.length > 0 && parklets.length > 0) {
-            return <LinkedModal parklet={parkletData[0]} />;
+          if (Object.keys(parklets).length > 0) {
+            if (parkletHash[pathWithoutSlash]) {
+              const parklet = parklets.filter(el => makeUrlFriendly(el.title) === pathWithoutSlash);
+              return <LinkedModal parklet={parklet[0]} />;
+            }
+            if (props.location.pathname !== '/') {
+              return <div>{invalidUrlMessage}</div>;
+            }
           }
 
           return null;
@@ -39,4 +47,7 @@ class LinkValidator extends Component {
   }
 }
 
+LinkValidator.propTypes = {
+  parklets: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 export default LinkValidator;
