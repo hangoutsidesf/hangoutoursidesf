@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import ReactModal from 'react-modal';
 
 
@@ -16,13 +16,11 @@ class LinkedModal extends Component {
   render() {
     if (this.state.parklet) {
       return (
-        <Fragment>
-          <ReactModal isOpen={this.state.displayModal} >
-            <div>parklet title is: {this.state.parklet.title}</div>
-            <div>parklet lat is: {this.state.parklet.position}</div>
-            <button onClick={this.closeModal} >Close!</button>
-          </ReactModal>
-        </Fragment>
+        <ReactModal isOpen={this.state.displayModal} >
+          <div>parklet title is: {this.state.parklet.title}</div>
+          <div>parklet lat is: {this.state.parklet.position}</div>
+          <button onClick={this.closeModal} >Close!</button>
+        </ReactModal>
       );
     }
     return null;
