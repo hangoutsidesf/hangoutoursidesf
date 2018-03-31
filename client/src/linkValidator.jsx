@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import LinkedModal from './linkedModal';
 import makeUrlFriendly from '../utils/makeUrlFriendly';
 
-
 class LinkValidator extends Component {
   constructor(props) {
     super(props);
@@ -16,33 +15,35 @@ class LinkValidator extends Component {
     this.setState({ parklets: nextProps.parklets });
   }
 
+  /* eslint-disable class-methods-use-this */
+  displayParkletModal(parklets, path) {
+    const parklet = parklets.filter(el => makeUrlFriendly(el.title) === path);
+    return <LinkedModal parklet={parklet[0]} />;
+  }
+  /* eslint-enable */
+
+  displayDetailBasedOnUrl(props, parklets) {
+    const invalidUrlMessage =
+      "Oops, that's not a recognized page. In the meantime, explore these parklets!";
+    const parkletsList = parklets.map(el => makeUrlFriendly(el.title));
+    const pathWithoutSlash = props.location.pathname.slice(1);
+
+    if (Object.keys(parklets).length > 0) {
+      if (parkletsList.includes(pathWithoutSlash)) {
+        return this.displayParkletModal(parklets, pathWithoutSlash);
+      }
+      if (props.location.pathname !== '/') {
+        return <div>{invalidUrlMessage}</div>;
+      }
+    }
+
+    return null;
+  }
+
   render() {
     const { parklets } = this.state;
-    const invalidUrlMessage = 'Oops, that\'s not a recognized page. In the meantime, explore these parklets!';
-
     return (
-      <Route
-        render={(props) => {
-          const pathWithoutSlash = props.location.pathname.slice(1);
-          const parkletHash = {};
-          const parkletsList = parklets.map(el => makeUrlFriendly(el.title));
-          parkletsList.forEach((el) => {
-            parkletHash[el] = true;
-          });
-
-          if (Object.keys(parklets).length > 0) {
-            if (parkletHash[pathWithoutSlash]) {
-              const parklet = parklets.filter(el => makeUrlFriendly(el.title) === pathWithoutSlash);
-              return <LinkedModal parklet={parklet[0]} />;
-            }
-            if (props.location.pathname !== '/') {
-              return <div>{invalidUrlMessage}</div>;
-            }
-          }
-
-          return null;
-        }}
-      />
+      <Route render={props => this.displayDetailBasedOnUrl(props, parklets)} />
     );
   }
 }
@@ -50,4 +51,5 @@ class LinkValidator extends Component {
 LinkValidator.propTypes = {
   parklets: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
+
 export default LinkValidator;
