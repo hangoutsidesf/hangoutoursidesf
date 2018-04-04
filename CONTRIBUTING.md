@@ -2,23 +2,24 @@
 
 ## Branching Strategy
 
-Feature -> Develop* -> Master -> Staging -> Deployment
-* default branch
+`feature` -> `development`* -> `master` -> `staging` -> `deployment`
 
-- Deployment: actual production environment available publicly
-- Staging: simulated deployed state only available internally
-- Master: always "good" source of truth. Only certain members can merge into master
-- Develop: "experimental / latest and greatest" code and default branch for all members
-- Feature: individual feature implementations per-user
+\* default branch
+
+- `deployment`: actual production environment available publicly
+- `staging`: simulated deployed state only available internally
+- `master`: always "good" source of truth. Only certain members can merge into master
+- `development`: "experimental / latest and greatest" code and default branch for all members
+- `feature`: individual feature implementations per-user
 
 ## Internal Developer Workflow
 
 1. Clone the repo.
-2. Switch to the 'develop' branch.
+2. Switch to the `development` branch.
 3. Create a new 'feature' branch named by feature (e.g. add-authentication).
-4. When you've finished with your fix or feature, rebase 'develop' changes into your branch to make sure you are caught up. Fix any conflicts, if any.
+4. When you've finished with your fix or feature, rebase `development` changes into your branch to make sure you are caught up. Fix any conflicts, if any.
 5. Push your branch up to the repo so you can make a pull request with: git push -u origin <your-branch-name>
-6. Make a pull request to 'develop' branch.
+6. Make a pull request to `development` branch.
 7. Your pull request will be reviewed by another maintainer. The point of code reviews is to help keep the codebase clean and of high quality and, equally as important, to help you grow as a programmer. If your code reviewer requests you make a change you don't understand, ask them why.
 8. Fix any issues raised by your code reviewer, and push your fixes as a single new commit.
 9. Once the pull request has been reviewed, it will be merged by another member of the team. Do not merge your own commits.
@@ -26,9 +27,9 @@ Feature -> Develop* -> Master -> Staging -> Deployment
 ## External Contributor Workflow
 
 1. Fork the repo
-2. Cut a namespaced feature branch from master
+2. Cut a namespaced feature branch from `development`
 3. Make commits to your feature branch. Prefix each commit like so:
-4. When you've finished with your fix or feature, Rebase upstream changes into your branch. submit a pull request directly to master. Include a description of your changes.
+4. When you've finished with your fix or feature, Rebase upstream changes into your branch. submit a pull request directly to `development`. Include a description of your changes.
 5. Your pull request will be reviewed by another maintainer. The point of code reviews is to help keep the codebase clean and of high quality and, equally as important, to help you grow as a programmer. If your code reviewer requests you make a change you don't understand, ask them why.
 6. Fix any issues raised by your code reviewer, and push your fixes as a single new commit.
 7. Once the pull request has been reviewed, it will be merged by another member of the team. Do not merge your own commits.
@@ -89,7 +90,7 @@ changes.
 
 Once you are done making changes, you can begin the process of getting
 your code merged into the main repo. Step 1 is to rebase upstream
-changes to the master branch into yours by running this command
+changes to the `development` branch into yours by running this command
 from your branch:
 
 ##### Internal Developer
@@ -134,7 +135,7 @@ you get here again and nothing is broken and all the tests pass.
 
 ### Make a pull request
 
-Make a clear pull request from your clone/fork and branch to the upstream develop
+Make a clear pull request from your clone/fork and branch to the upstream `development`
 branch, detailing exactly what changes you made and what feature this
 should add. The clearer your pull request is the faster you can get
 your changes incorporated into this repo.
@@ -164,11 +165,11 @@ Thanks for contributing!
 
 This is just to help you organize your process
 
-- [ ] Did I cut my work branch off of develop (don't cut new branches from existing feature branches)?
+- [ ] Did I cut my work branch off of `development` (don't cut new branches from existing feature branches)?
 - [ ] Did I follow the correct naming convention for my branch?
 - [ ] Is my branch focused on a single main change?
   - [ ] Do all of my changes directly relate to this change?
-- [ ] Did I rebase the upstream develop branch after I finished all my
+- [ ] Did I rebase the upstream `development` branch after I finished all my
   work?
 - [ ] Did I write a clear pull request message detailing what changes I made?
 - [ ] Did I get a code review?
