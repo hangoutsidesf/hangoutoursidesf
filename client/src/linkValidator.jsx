@@ -25,10 +25,10 @@ class LinkValidator extends Component {
   displayDetailBasedOnUrl(props, parklets) {
     const invalidUrlMessage =
       "Oops, that's not a recognized page. In the meantime, explore these parklets!";
-    const parkletsList = parklets.map(el => makeUrlFriendly(el.title));
     const pathWithoutSlash = props.location.pathname.slice(1);
 
     if (Object.keys(parklets).length > 0) {
+      const parkletsList = parklets.map(el => makeUrlFriendly(el.title));
       if (parkletsList.includes(pathWithoutSlash)) {
         return this.displayParkletModal(parklets, pathWithoutSlash);
       }
