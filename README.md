@@ -48,8 +48,10 @@ $ NODE_ENV=production node /path/to/server/index
 ```
 
 #### Deployment
-For deployment, we use docker to for thier modularity and ease of use. You can more closely similate a staging or production environment by running your instances in Docker locally. This part of the proejct is in development and should be part of the `development`, `staging` and `deployment` branches soon. 
+For deployment, we use Docker containers to for thier modularity and ease of use. You can more closely similate a staging or production environment by running your instances in Docker locally. This part of the proejct is in development and should be part of the `development`, `staging` and `deployment` branches soon. 
 
 ## Contributing
 [Contributing Guidelines](CONTRIBUTING.md)
 
+## StyleGuide
+We adhere to the [AirBnB styleguide](https://github.com/airbnb/javascript). In addition, we also use `impoort` and `export` statements rather than CommonJS across the stack. 
