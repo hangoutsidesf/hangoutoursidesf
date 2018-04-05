@@ -17,7 +17,7 @@ Hangoutsidesf is a application to find a San Francisco parklet. It has all the i
 
 #### Analytics
 - [Jackie Leung](https://github.com/jackieline)
-- [Brendan Kelly]()
+- [Brendan Kelly](http://www.github.com/BrendanKelly94)
 
 ## Installation
 - Clone down developement branch of [hangoutsidesf](https://github.com/hangoutsidesf/hangoutsidesf)
