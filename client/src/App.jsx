@@ -3,7 +3,7 @@ import React from 'react';
 import MapView from './mapView';
 
 const App = () => (
-  <div>
+  <div id="home">
     <MapView />
   </div>
 );
