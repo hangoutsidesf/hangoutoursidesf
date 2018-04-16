@@ -3,11 +3,16 @@
 */
 $hosfColor: #10B535;
 
+@mixin buttonView($color, $background) {
+	background: $background;
+	color: $color;
+}
+
 .btn {
 	display: block;
 	width: 100%;
-	height: auto;
-	font-size: 2.5vh;
+	height: 60px;
+	font-size: 1.5em;
 	border-radius: 5px;
 }
 
@@ -18,22 +23,10 @@ $hosfColor: #10B535;
 	transition-duration: 300ms;
 }
 
-.btn-dark {
-	background: $hosfColor;
-	color: whitesmoke;
+.btn-dark, .btn-dark-outline:hover {
+	@include buttonView(whitesmoke, $hosfColor);
 }
 
-.btn-dark-outline {
-	color: $hosfColor;
-	background: whitesmoke;
-}
-
-.btn-dark-outline:hover {
-	background: $hosfColor;
-	color: whitesmoke;
-}
-
-.btn-dark:hover {
-	color: $hosfColor;
-	background: whitesmoke;
+.btn-dark-outline, .btn-dark:hover {
+	@include buttonView($hosfColor, whitesmoke);
 }
