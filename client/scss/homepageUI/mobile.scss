@@ -1,4 +1,4 @@
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1280px) and (orientation: portrait) {
 	#home {
 		grid-template-rows: auto 350px;
 		grid-template-areas: "m" "s";
@@ -29,5 +29,32 @@
 }
 
 @media screen and (max-width: 1280px) and (orientation: landscape) {
-	/* TODO: landscape orientation */
+	#home {
+		height: 100vh;
+		grid-template-columns: auto 400px;
+		grid-template-areas: "m s";
+	}
+
+	.interface {
+		padding: 20px 30px;
+		grid-template-areas:
+			"a"
+			"."
+			"."
+			"."
+			"o"
+			"f"
+			"w"
+			"."
+			"."
+			"."
+			"i"
+		;
+	}
+
+	.content {
+		font-size: 0;
+		width: 0;
+		position: absolute;
+	}
 }
