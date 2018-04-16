@@ -1,0 +1,33 @@
+.address {
+	grid-area: a;
+}
+
+.open {
+	grid-area: o;
+}
+
+.food {
+	grid-area: f;
+}
+
+.wifi {
+	grid-area: w;
+}
+
+.content {
+	grid-area: c;
+	h1 {
+		text-align: center;
+	}
+	p {
+		font-size: 1.3em;
+	}
+}
+
+.bottom-question {
+	text-align: center;
+	grid-area: i;
+	max-height: 50px;
+	font-size: 2em;
+	text-decoration: underline;
+}

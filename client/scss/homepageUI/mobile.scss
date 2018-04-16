@@ -1,0 +1,33 @@
+@media screen and (max-width: 1280px) {
+	#home {
+		grid-template-rows: auto 350px;
+		grid-template-areas: "m" "s";
+	}
+
+	.interface {
+		padding: 10px 30px;
+		grid-template-columns: repeat(8, (100%/ 8));
+		grid-template-areas: 
+			"a a a a a a a a"
+			". . . . . . . ."
+			". . . . . . . ."
+			"o o . f f . w w"
+			". . . . . . . ."
+			". . . . . . . ."
+			"i i i i i i i i"
+		;
+	}
+
+	.content {
+		font-size: 0;
+	}
+
+	.bottom-question {
+		padding: 0;
+		margin: 0;
+	}
+}
+
+@media screen and (max-width: 1280px) and (orientation: landscape) {
+	/* TODO: landscape orientation */
+}
