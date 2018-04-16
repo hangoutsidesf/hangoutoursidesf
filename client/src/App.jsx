@@ -1,9 +1,12 @@
 import React from 'react';
+
 import MapView from './mapView';
+import Interface from './interface';
 
 const App = () => (
-  <div>
+  <div id="home">
     <MapView />
+    <Interface />
   </div>
 );
 
