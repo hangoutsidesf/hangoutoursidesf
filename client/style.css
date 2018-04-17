@@ -1,8 +1,127 @@
-.leaflet-container {
-  height: 98vh;
-  width: 74vw;
-}
+.address {
+  grid-area: a; }
+
+.open {
+  grid-area: o; }
+
+.food {
+  grid-area: f; }
+
+.wifi {
+  grid-area: w; }
+
+.content {
+  grid-area: c; }
+  .content h1 {
+    text-align: center; }
+  .content p {
+    font-size: 1.3em; }
+
+.bottom-question {
+  text-align: center;
+  grid-area: i;
+  max-height: 50px;
+  font-size: 2em;
+  text-decoration: underline; }
+
+/*
+	All designs for the buttons are here
+*/
+.btn {
+  display: block;
+  width: 100%;
+  height: 60px;
+  font-size: 1.5em;
+  border-radius: 5px; }
+
+.btn-dark, .btn-dark-outline {
+  border-style: solid;
+  border-width: 2px;
+  border-color: #10B535;
+  -webkit-transition-duration: 300ms;
+  -o-transition-duration: 300ms;
+  transition-duration: 300ms; }
+
+.btn-dark, .btn-dark-outline:hover {
+  background: #10B535;
+  color: whitesmoke; }
+
+.btn-dark-outline, .btn-dark:hover {
+  background: whitesmoke;
+  color: #10B535; }
+
+@media screen and (max-width: 1280px) {
+  .content {
+    font-size: 0;
+    position: absolute; }
+  .interface {
+    padding: 40px 30px; }
+  .bottom-question {
+    padding: 0;
+    margin: 0; }
+  /*
+		mobile and web view responds differently to px size.
+		this is based on device size not window size.
+	*/
+  /* 
+		everything else that manipulates the dom directly. this also accounts 
+		for web desktop with the window being "mobile" sized due to the fact 
+		that it shares alot of traits with the mobile css (plus it saves extra
+		code from being written)
+	*/ }
+
+@media screen and (max-width: 1280px) and (orientation: portrait) {
+  /* for mobile */
+  #home {
+    grid-template-rows: auto 30vh; }
+  .btn {
+    height: 90px; }
+  /* for web */
+  #home {
+    grid-template-areas: "m" "s"; }
+  .interface {
+    grid-template-columns: repeat(8, 12.5%);
+    grid-template-areas: "a a a a a a a a" ". . . . . . . ." "o o . f f . w w" ". . . . . . . ." "i i i i i i i i"; } }
+
+@media screen and (max-width: 1280px) and (orientation: landscape) {
+  #home {
+    grid-template-columns: auto 400px;
+    grid-template-areas: "m s"; }
+  .interface {
+    grid-template-areas: "a" "." "." "." "o" "f" "w" "." "." "." "i"; } }
+
+/********************
+For desktop view
+*********************/
+@media screen and (min-width: 1280px) {
+  #home {
+    grid-template-columns: auto 450px;
+    grid-template-areas: "m s"; }
+  .interface {
+    padding: 0 20px;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+    grid-template-areas: "." "a" "." "." "." "o" "f" "w" "." "." "c" "." "i"; } }
+
+body {
+  padding: 0;
+  margin: 0; }
+
+#home {
+  display: grid;
+  height: 100vh;
+  width: 100vw; }
 
 .customPopup {
-  display: none,
-}
+  display: none; }
+
+.leaflet-container {
+  height: 100%;
+  width: 100%; }
+
+.customPopup {
+  display: none; }
+
+.interface {
+  display: grid;
+  grid-auto-rows: minmax(0, auto); }
