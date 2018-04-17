@@ -58,28 +58,30 @@
     padding: 40px 30px; }
   .bottom-question {
     padding: 0;
-    margin: 0; } }
+    margin: 0; }
+  /*
+		mobile and web view responds differently to px size.
+		this is based on device size not window size.
+	*/
+  /* 
+		everything else that manipulates the dom directly. this also accounts 
+		for web desktop with the window being "mobile" sized due to the fact 
+		that it shares alot of traits with the mobile css (plus it saves extra
+		code from being written)
+	*/ }
 
 @media screen and (max-width: 1280px) and (orientation: portrait) {
+  /* for mobile */
+  #home {
+    grid-template-rows: auto 30vh; }
+  .btn {
+    height: 90px; }
+  /* for web */
   #home {
     grid-template-areas: "m" "s"; }
   .interface {
     grid-template-columns: repeat(8, 12.5%);
-    grid-template-areas: "a a a a a a a a" ". . . . . . . ." "o o . f f . w w" ". . . . . . . ." "i i i i i i i i"; }
-  /* for mobile only */ }
-
-@media screen and (max-width: 1280px) and (orientation: portrait) and (max-device-width: 1280px) {
-  #home {
-    grid-template-rows: auto 30vh; }
-  .btn {
-    height: 90px; } }
-
-@media screen and (max-width: 1280px) and (orientation: portrait) {
-  /* for web only */ }
-
-@media screen and (max-width: 1280px) and (orientation: portrait) and (min-device-width: 1280px) {
-  #home {
-    grid-template-rows: auto 350px; } }
+    grid-template-areas: "a a a a a a a a" ". . . . . . . ." "o o . f f . w w" ". . . . . . . ." "i i i i i i i i"; } }
 
 @media screen and (max-width: 1280px) and (orientation: landscape) {
   #home {
