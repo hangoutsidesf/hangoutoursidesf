@@ -41,11 +41,13 @@
     "nodemon": "^1.17.2",
     "react-test-renderer": "^16.2.0",
     "supertest": "^3.0.0",
+    "sw-precache-webpack-plugin": "^0.11.5",
     "uglifyjs-webpack-plugin": "^1.2.3",
     "webpack": "^4.1.1",
     "webpack-cli": "^2.0.12",
     "webpack-dev-middleware": "^3.0.1",
-    "webpack-hot-middleware": "^2.21.2"
+    "webpack-hot-middleware": "^2.21.2",
+    "webpack-manifest-plugin": "^2.0.0"
   },
   "dependencies": {
     "dotenv": "^5.0.1",
