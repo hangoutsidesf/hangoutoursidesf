@@ -117,13 +117,11 @@ body {
 
 .leaflet-container {
   height: 100%;
-  width: 100%;
-  grid-area: m; }
+  width: 100%; }
 
 .customPopup {
   display: none; }
 
 .interface {
   display: grid;
-  grid-area: s;
   grid-auto-rows: minmax(0, auto); }
