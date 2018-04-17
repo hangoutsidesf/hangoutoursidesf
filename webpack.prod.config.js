@@ -1,5 +1,6 @@
 const path = require('path');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin'); // eslint-disable-line import/no-extraneous-dependencies
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const SRC_DIR = path.join(__dirname, '/client/src');
 const DIST_DIR = path.join(__dirname, '/client/dist');
@@ -17,6 +18,7 @@ module.exports = {
     new UglifyJSPlugin({
       sourceMap: true,
     }),
+    new ExtractTextPlugin('styles.css'),
   ],
   module: {
     rules: [
@@ -24,6 +26,20 @@ module.exports = {
         test: /\.jsx?/,
         exclude: /node_modules/,
         use: 'babel-loader',
+      },
+      {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+            },
+            {
+              loader: 'sass-loader',
+            },
+          ],
+        }),
       },
     ],
   },
