@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 import LinkedModal from './linkedModal';
 import makeUrlFriendly from '../utils/makeUrlFriendly';
 
 class LinkValidator extends Component {
+  static getDerivedStateFromProps(nextProps) {
+    return {
+      parklets: nextProps.parklets,
+    };
+  }
+
   constructor(props) {
     super(props);
     this.state = { parklets: '', ...props };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({ parklets: nextProps.parklets });
   }
 
   /* eslint-disable class-methods-use-this */
@@ -48,8 +49,5 @@ class LinkValidator extends Component {
   }
 }
 
-LinkValidator.propTypes = {
-  parklets: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
 
 export default LinkValidator;
