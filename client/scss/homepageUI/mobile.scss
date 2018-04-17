@@ -1,60 +1,78 @@
-@media screen and (max-width: 1280px) and (orientation: portrait) {
-	#home {
-		grid-template-rows: auto 350px;
-		grid-template-areas: "m" "s";
+$portraitGrid: 
+	"a a a a a a a a"
+	". . . . . . . ."
+	"o o . f f . w w"
+	". . . . . . . ."
+	"i i i i i i i i"
+;
+
+$landscapeGrid:
+	"a"
+	"."
+	"."
+	"."
+	"o"
+	"f"
+	"w"
+	"."
+	"."
+	"."
+	"i"
+;
+
+
+@media screen and (max-width: 1280px) {
+	.content {
+		font-size: 0;
+		position: absolute;
 	}
 
 	.interface {
-		padding: 10px 30px;
-		grid-template-columns: repeat(8, (100%/ 8));
-		grid-template-areas: 
-			"a a a a a a a a"
-			". . . . . . . ."
-			". . . . . . . ."
-			"o o . f f . w w"
-			". . . . . . . ."
-			". . . . . . . ."
-			"i i i i i i i i"
-		;
-	}
-
-	.content {
-		font-size: 0;
+		padding: 40px 30px;
 	}
 
 	.bottom-question {
 		padding: 0;
 		margin: 0;
 	}
-}
 
-@media screen and (max-width: 1280px) and (orientation: landscape) {
-	#home {
-		height: 100vh;
-		grid-template-columns: auto 400px;
-		grid-template-areas: "m s";
+	@media (orientation: portrait) {
+		#home {
+			grid-template-areas: "m" "s";
+		}
+
+		.interface {
+			grid-template-columns: repeat(8, (100%/ 8));
+			grid-template-areas: $portraitGrid;
+		}
+
+		/* for mobile only */
+
+		@media (max-device-width: 1280px) {
+			#home {
+				grid-template-rows: auto 30vh;
+			}
+			.btn {
+				height: 90px;
+			}
+		}
+
+		/* for web only */
+		@media (min-device-width: 1280px) {
+			#home {
+				grid-template-rows: auto 350px;
+			}
+		}
 	}
 
-	.interface {
-		padding: 20px 30px;
-		grid-template-areas:
-			"a"
-			"."
-			"."
-			"."
-			"o"
-			"f"
-			"w"
-			"."
-			"."
-			"."
-			"i"
-		;
-	}
+	@media (orientation: landscape) {
+		#home {
+			grid-template-columns: auto 400px;
+			grid-template-areas: "m s";
+		}
 
-	.content {
-		font-size: 0;
-		width: 0;
-		position: absolute;
+		.interface {
+			grid-template-areas: $landscapeGrid;
+		}
 	}
 }

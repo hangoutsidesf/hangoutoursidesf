@@ -50,32 +50,43 @@
   background: whitesmoke;
   color: #10B535; }
 
-@media screen and (max-width: 1280px) and (orientation: portrait) {
-  #home {
-    grid-template-rows: auto 350px;
-    grid-template-areas: "m" "s"; }
-  .interface {
-    padding: 10px 30px;
-    grid-template-columns: repeat(8, 12.5%);
-    grid-template-areas: "a a a a a a a a" ". . . . . . . ." ". . . . . . . ." "o o . f f . w w" ". . . . . . . ." ". . . . . . . ." "i i i i i i i i"; }
+@media screen and (max-width: 1280px) {
   .content {
-    font-size: 0; }
+    font-size: 0;
+    position: absolute; }
+  .interface {
+    padding: 40px 30px; }
   .bottom-question {
     padding: 0;
     margin: 0; } }
 
+@media screen and (max-width: 1280px) and (orientation: portrait) {
+  #home {
+    grid-template-areas: "m" "s"; }
+  .interface {
+    grid-template-columns: repeat(8, 12.5%);
+    grid-template-areas: "a a a a a a a a" ". . . . . . . ." "o o . f f . w w" ". . . . . . . ." "i i i i i i i i"; }
+  /* for mobile only */ }
+
+@media screen and (max-width: 1280px) and (orientation: portrait) and (max-device-width: 1280px) {
+  #home {
+    grid-template-rows: auto 30vh; }
+  .btn {
+    height: 90px; } }
+
+@media screen and (max-width: 1280px) and (orientation: portrait) {
+  /* for web only */ }
+
+@media screen and (max-width: 1280px) and (orientation: portrait) and (min-device-width: 1280px) {
+  #home {
+    grid-template-rows: auto 350px; } }
+
 @media screen and (max-width: 1280px) and (orientation: landscape) {
   #home {
-    height: 100vh;
     grid-template-columns: auto 400px;
     grid-template-areas: "m s"; }
   .interface {
-    padding: 20px 30px;
-    grid-template-areas: "a" "." "." "." "o" "f" "w" "." "." "." "i"; }
-  .content {
-    font-size: 0;
-    width: 0;
-    position: absolute; } }
+    grid-template-areas: "a" "." "." "." "o" "f" "w" "." "." "." "i"; } }
 
 /********************
 For desktop view
