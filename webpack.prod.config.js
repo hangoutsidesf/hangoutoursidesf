@@ -1,5 +1,6 @@
+/* eslint import/no-extraneous-dependencies: 0 */
 const path = require('path');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin'); // eslint-disable-line import/no-extraneous-dependencies
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const SRC_DIR = path.join(__dirname, '/client/src');
