@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default () => (
+const Interface = () => (
   <div className="interface">
     <button className="btn btn-dark address">Enter address</button>
     <button className="btn btn-dark open">Open now</button>
@@ -16,3 +16,5 @@ export default () => (
     <h2 className="bottom-question">Idea or Issue?</h2>
   </div>
 );
+
+export default Interface;
