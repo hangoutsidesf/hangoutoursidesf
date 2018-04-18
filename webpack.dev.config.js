@@ -1,10 +1,11 @@
 import path from 'path';
 import webpack from 'webpack'; // eslint-disable-line import/no-extraneous-dependencies
 import SWPrecacheWebpackPlugin from 'sw-precache-webpack-plugin';
+import WorkboxPlugin from 'workbox-webpack-plugin';
 
 const SRC_DIR = path.join(__dirname, '/client/src');
 const DIST_DIR = path.join(__dirname, '/client/dist');
-const PUBLIC_PATH = 'http://localhost:8080';
+
 
 module.exports = {
   mode: 'development',
@@ -12,29 +13,38 @@ module.exports = {
   entry: ['webpack-hot-middleware/client', `${SRC_DIR}/index.jsx`],
   output: {
     filename: 'bundle.js',
-    path: DIST_DIR,
-    publicPath: PUBLIC_PATH,
+    path: DIST_DIR
   },
   plugins: [
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    new SWPrecacheWebpackPlugin({
-      cacheId: 'hangoutsidesf',
-      filename: 'hangoutsidesf-service-worker.js',
-      staticFileGlobs: [
-        'client/*.css',
-        'client/*.html',
-        'client/mapconfig.js'
+    new WorkboxPlugin.GenerateSW({
+      swDest: 'service-worker.js',
+      // Exclude images from the precache
+      exclude: [/\.(?:png|jpg|jpeg|svg)$/],
+      // Define runtime caching rules.
+      runtimeCaching: [
+        {
+          // Match any request ends with .png, .jpg, .jpeg or .svg.
+          urlPattern: /http.*jpg/,
+          // Apply a cache-first strategy.
+          handler: 'cacheFirst',
+          options: {
+            cacheName: 'image-cache',
+            expiration: {
+              maxEntries: 20,
+              maxAgeSeconds: 72 * 60 * 60
+            },
+            cacheableResponse: { statuses: [0, 200] },
+          },
+        },
+        {
+          urlPattern: /http.*json/,
+          handler: 'cacheFirst'
+        }
       ],
-      minify: true,
-      navigateFallback: PUBLIC_PATH + '/',
-      staticFileGlobsIgnorePatterns: [/\.map$/, /manifest\.json$/],
-      runtimeCaching: [{
-        urlPattern: "(.*)",
-        handler: "cacheFirst"
-      }]
     })
   ],
   module: {
