@@ -16,8 +16,22 @@ const getType = (type) => {
   }
 };
 
+const toggleFilter = (event) => {
+  const { classList } = event.target;
+
+  if (classList.contains('btn-dark')) {
+    classList.remove('btn-dark');
+    classList.add('btn-dark-outline');
+  } else {
+    classList.remove('btn-dark-outline');
+    classList.add('btn-dark');
+  }
+};
+
 const FilterButton = props => (
-  <button className={`btn btn-dark ${props.type}`}>{getType(props.type)}</button>
+  <button onClick={event => toggleFilter(event)} className={`btn btn-dark ${props.type}`}>
+    {getType(props.type)}
+  </button>
 );
 
 FilterButton.propTypes = {
