@@ -5,7 +5,7 @@ For desktop view
 @media screen and (min-width: 1280px) {
   #home {
     grid-template-columns: auto 450px;
-    grid-template-areas: "m s";
+    grid-template-areas: 'm s';
   }
 
   .interface {
@@ -13,18 +13,18 @@ For desktop view
     grid-template-columns: 1fr;
     grid-gap: 20px;
     grid-template-areas:
-      "."
-      "a"
-      "."
-      "."
-      "."
-      "o"
-      "f"
-      "w"
-      "."
-      "."
-      "c"
-      "."
-      "i";
+      '.'
+      'a'
+      '.'
+      '.'
+      '.'
+      'o'
+      'f'
+      'w'
+      '.'
+      '.'
+      'c'
+      '.'
+      'i';
   }
 }

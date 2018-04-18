@@ -60,15 +60,15 @@
     padding: 0;
     margin: 0; }
   /*
-		mobile and web view responds differently to px size.
-		this is based on device size not window size.
-	*/
+    mobile and web view responds differently to px size.
+    this is based on device size not window size.
+  */
   /* 
-		everything else that manipulates the dom directly. this also accounts 
-		for web desktop with the window being "mobile" sized due to the fact 
-		that it shares alot of traits with the mobile css (plus it saves extra
-		code from being written)
-	*/ }
+    everything else that manipulates the dom directly. this also accounts 
+    for web desktop with the window being "mobile" sized due to the fact 
+    that it shares alot of traits with the mobile css (plus it saves extra
+    code from being written)
+  */ }
 
 @media screen and (max-width: 1280px) and (orientation: portrait) {
   /* for mobile */
@@ -78,7 +78,7 @@
     height: 90px; }
   /* for web */
   #home {
-    grid-template-areas: "m" "s"; }
+    grid-template-areas: 'm' 's'; }
   .interface {
     grid-template-columns: repeat(8, 12.5%);
     grid-template-areas: "a a a a a a a a" ". . . . . . . ." "o o . f f . w w" ". . . . . . . ." "i i i i i i i i"; } }
@@ -86,7 +86,7 @@
 @media screen and (max-width: 1280px) and (orientation: landscape) {
   #home {
     grid-template-columns: auto 400px;
-    grid-template-areas: "m s"; }
+    grid-template-areas: 'm s'; }
   .interface {
     grid-template-areas: "a" "." "." "." "o" "f" "w" "." "." "." "i"; } }
 
@@ -96,12 +96,12 @@ For desktop view
 @media screen and (min-width: 1280px) {
   #home {
     grid-template-columns: auto 450px;
-    grid-template-areas: "m s"; }
+    grid-template-areas: 'm s'; }
   .interface {
     padding: 0 20px;
     grid-template-columns: 1fr;
     grid-gap: 20px;
-    grid-template-areas: "." "a" "." "." "." "o" "f" "w" "." "." "c" "." "i"; } }
+    grid-template-areas: '.' 'a' '.' '.' '.' 'o' 'f' 'w' '.' '.' 'c' '.' 'i'; } }
 
 body {
   padding: 0;

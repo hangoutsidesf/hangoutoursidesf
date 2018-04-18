@@ -1,23 +1,23 @@
 $portraitGrid: 
-  "a a a a a a a a"
-  ". . . . . . . ."
-  "o o . f f . w w"
-  ". . . . . . . ."
-  "i i i i i i i i"
+  'a a a a a a a a'
+  '. . . . . . . .'
+  'o o . f f . w w'
+  '. . . . . . . .'
+  'i i i i i i i i'
 ;
 
 $landscapeGrid:
-  "a"
-  "."
-  "."
-  "."
-  "o"
-  "f"
-  "w"
-  "."
-  "."
-  "."
-  "i"
+  'a'
+  '.'
+  '.'
+  '.'
+  'o'
+  'f'
+  'w'
+  '.'
+  '.'
+  '.'
+  'i'
 ;
 
 
@@ -72,7 +72,7 @@ $landscapeGrid:
     @include interfaceViewByDevice;
 
     #home {
-      grid-template-areas: "m" "s";
+      grid-template-areas: 'm' 's';
     }
 
     .interface {
@@ -84,7 +84,7 @@ $landscapeGrid:
   @media (orientation: landscape) {
     #home {
       grid-template-columns: auto 400px;
-      grid-template-areas: "m s";
+      grid-template-areas: 'm s';
     }
 
     .interface {
