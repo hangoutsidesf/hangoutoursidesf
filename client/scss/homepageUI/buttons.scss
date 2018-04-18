@@ -28,5 +28,5 @@ $hosfColor: #10B535;
 }
 
 .btn-dark-outline, .btn-dark:hover {
-	@include buttonView($hosfColor, whitesmoke);
+  @include buttonView($hosfColor, whitesmoke);
 }
