@@ -37,22 +37,21 @@ $landscapeGrid:
   }
 
   /*
-    mobile and web view responds differently to px size.
-    this is based on device size not window size.
-  */
-
+		mobile and web view responds differently to px size.
+		this is based on device size not window size.
+	*/
   @mixin interfaceViewByDevice {
     /* for mobile */
-
     @if (max-device-width: 1280px) {
       #home {
-      	grid-template-rows: auto 30vh;
-      }
-      .btn {
-      	height: 90px;
+        grid-template-rows: auto 30vh;
       }
 
-		/* for web */
+      .btn {
+        height: 90px;
+      }
+
+      /* for web */
     } @else {
       #home {
         grid-template-rows: auto 350px;
@@ -60,19 +59,17 @@ $landscapeGrid:
     }
   }
 
-
-  /* 
-    everything else that manipulates the dom directly. this also accounts 
-    for web desktop with the window being "mobile" sized due to the fact 
-    that it shares alot of traits with the mobile css (plus it saves extra
-    code from being written)
-  */
-
+  /*
+		everything else that manipulates the dom directly. this also accounts
+		for web desktop with the window being "mobile" sized due to the fact
+		that it shares alot of traits with the mobile css (plus it saves extra
+		code from being written)
+	*/
   @media (orientation: portrait) {
     @include interfaceViewByDevice;
 
     #home {
-      grid-template-areas: 'm' 's';
+      grid-template-areas: "m" "s";
     }
 
     .interface {
@@ -80,11 +77,10 @@ $landscapeGrid:
       grid-template-areas: $portraitGrid;
     }
   }
-
   @media (orientation: landscape) {
     #home {
       grid-template-columns: auto 400px;
-      grid-template-areas: 'm s';
+      grid-template-areas: "m s";
     }
 
     .interface {
