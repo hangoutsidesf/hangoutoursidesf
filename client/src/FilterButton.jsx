@@ -17,7 +17,7 @@ const getType = (type) => {
 };
 
 const FilterButton = props => (
-  <button>{getType(props.type)}</button>
+  <button className={`btn btn-dark ${props.type}`}>{getType(props.type)}</button>
 );
 
 FilterButton.propTypes = {
