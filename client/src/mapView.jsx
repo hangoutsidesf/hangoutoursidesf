@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { Map, TileLayer } from 'react-leaflet';
 import ReactModal from 'react-modal';
+import { Link } from 'react-router-dom';
 
 import { tileSet, SFGeo, zoomLevel, mapAttribution } from '../mapconfig';
 import MarkerCollection from './markerCollection';
+import LinkValidator from './linkValidator';
 import fetchParklets from '../utils/fetchParklets';
+import makeUrlFriendly from '../utils/makeUrlFriendly';
 
 const PARKLETS_ENDPOINT = 'https://data.sfgov.org/resource/6a7x-cttf.json';
 
@@ -17,9 +20,11 @@ class MapView extends Component {
       parklets: [],
       error: '',
       displayModal: false,
+      selectedMarker: '',
     };
 
     this.toggleModal = this.toggleModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   componentDidMount() {
@@ -29,13 +34,19 @@ class MapView extends Component {
   }
 
   toggleModal(clickedMarkerData) {
-    this.setState({ displayModal: !this.state.displayModal });
-    return ('Pass me back into the modal component', clickedMarkerData);
+    this.setState({
+      displayModal: !this.state.displayModal,
+      selectedMarker: clickedMarkerData,
+    });
+  }
+
+  closeModal() {
+    this.setState({ displayModal: false });
   }
 
   render() {
     const {
-      center, zoom, parklets, error, displayModal,
+      center, zoom, parklets, error, displayModal, selectedMarker,
     } = this.state;
     return (
       <div>
@@ -46,7 +57,12 @@ class MapView extends Component {
           }
           <MarkerCollection parklets={parklets} displayModal={this.toggleModal} />
         </Map>
-        <ReactModal isOpen={displayModal} />
+        <ReactModal isOpen={displayModal}>
+          Title is: {selectedMarker}
+          <Link to={makeUrlFriendly(selectedMarker)}>link is: {`${selectedMarker}`}</Link>
+          <button onClick={this.closeModal} >Close modal</button>
+        </ReactModal>
+        <LinkValidator parklets={parklets} />
       </div>
     );
   }
