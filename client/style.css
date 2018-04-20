@@ -120,13 +120,8 @@ body {
   width: 100%; }
 
 .customPopup {
-<<<<<<< HEAD
   display: none; }
 
 .interface {
   display: grid;
   grid-auto-rows: minmax(0, auto); }
-=======
-  display: none;
-}
->>>>>>> Dynamically generates link within modal based on a selected markers state.
