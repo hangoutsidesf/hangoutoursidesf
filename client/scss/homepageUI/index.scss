@@ -3,7 +3,6 @@
 @import 'mobile';
 @import 'web';
 
-
 body {
   padding: 0;
   margin: 0;
@@ -16,16 +15,12 @@ body {
 }
 
 .customPopup {
-  display: none,
+  display: none;
 }
 
 .leaflet-container {
   height: 100%;
   width: 100%;
-}
-
-.customPopup {
-  display: none;
 }
 
 .interface {
