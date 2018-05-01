@@ -1,11 +1,12 @@
 import React from 'react';
+import FilterButton from './FilterButton';
 
 const Interface = () => (
   <div className="interface">
-    <button className="btn btn-dark address">Enter address</button>
-    <button className="btn btn-dark open">Open now</button>
-    <button className="btn btn-dark food"><i className="fas fa-coffee" /></button>
-    <button className="btn btn-dark-outline wifi"><i className="fas fa-wifi" /></button>
+    <FilterButton type="address" />
+    <FilterButton type="open" />
+    <FilterButton type="food" />
+    <FilterButton type="wifi" />
     <div className="content">
       <h1>What&apos;s a parklet?</h1>
       <p>
