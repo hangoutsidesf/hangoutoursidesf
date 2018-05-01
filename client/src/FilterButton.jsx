@@ -19,7 +19,12 @@ const getType = (type) => {
 const toggleFilter = (event) => {
   const { classList } = event.target;
 
-  if (classList.contains('btn-dark')) {
+  // <i> elements seem to work like buttons, and do not reference the buttons
+  // themselves, so if clicked, we change the classList into the rightful one
+  if (classList.contains('fas')) {
+    const target = event.target.parentElement;
+    toggleFilter({ target });
+  } else if (classList.contains('btn-dark')) {
     classList.remove('btn-dark');
     classList.add('btn-dark-outline');
   } else {
