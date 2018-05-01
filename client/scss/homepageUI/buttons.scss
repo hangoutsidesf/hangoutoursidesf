@@ -22,14 +22,13 @@ $hosfColor: #10b535;
   border-width: 2px;
   border-color: $hosfColor;
   transition-duration: 300ms;
+  
 }
 
-.btn-dark,
-.btn-dark-outline:hover {
+.btn-dark {
   @include buttonView(whitesmoke, $hosfColor);
 }
 
-.btn-dark-outline,
-.btn-dark:hover {
+.btn-dark-outline {
   @include buttonView($hosfColor, whitesmoke);
 }
