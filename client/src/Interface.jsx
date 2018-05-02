@@ -1,12 +1,12 @@
 import React from 'react';
 import FilterButton from './FilterButton';
 
-const Interface = () => (
+const Interface = (props) => (
   <div className="interface">
     <FilterButton type="address" />
-    <FilterButton type="open" />
-    <FilterButton type="food" />
-    <FilterButton type="wifi" />
+    <FilterButton handler={props.handleFilters} type="open" />
+    <FilterButton handler={props.handleFilters} type="food" />
+    <FilterButton handler={props.handleFilters} type="wifi" />
     <div className="content">
       <h1>What&apos;s a parklet?</h1>
       <p>

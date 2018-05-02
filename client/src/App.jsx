@@ -34,7 +34,13 @@ class App extends Component {
     console.log(activeParklets);
 
     parklets.forEach(parklet => {
-    
+      if (open.classList.contains('btn-dark-outline')) {
+        console.log('filter out closed places');
+      } else if (food.classList.contains('btn-dark-outline')) {
+        console.log('filter out places with no coffee');
+      } else if (wifi.classList.contains('btn-dark-outline')) {
+        console.log('filter out places with no wifi');
+      }
     });
   }
 
@@ -42,7 +48,7 @@ class App extends Component {
     return (
       <div id="home">
         <MapView parklets={this.state.activeParklets} />
-        <Interface />
+        <Interface handleFilters={this.handleFilters.bind(this)} />
       </div>
     );
   }
