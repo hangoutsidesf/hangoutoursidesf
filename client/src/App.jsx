@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 
 import MapView from './mapView';
 import Interface from './Interface';
+import fetchParklets from '../utils/fetchParklets';
+
+const PARKLETS_ENDPOINT = 'https://data.sfgov.org/resource/6a7x-cttf.json';
 
 class App extends Component {
   constructor() {
@@ -13,8 +16,12 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.handleFilters();
+    fetchParklets(PARKLETS_ENDPOINT)
+      .then(data => this.setState({ activeParklets: data }))
+      .then(() => this.handleFilters())
+      .catch(err => this.setState({ error: err }));
   }
+
   handleFilters() {
     const open = document.querySelector('.open');
     const food = document.querySelector('.food');
@@ -24,7 +31,7 @@ class App extends Component {
     const show = [];
     const hide = [];
 
-    console.log(open, food, wifi);
+    console.log(activeParklets);
 
     parklets.forEach(parklet => {
     
@@ -34,7 +41,7 @@ class App extends Component {
   render() {
     return (
       <div id="home">
-        <MapView />
+        <MapView parklets={this.state.activeParklets} />
         <Interface />
       </div>
     );

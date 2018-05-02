@@ -14,18 +14,11 @@ class MapView extends Component {
     this.state = {
       center: [SFGeo[0], SFGeo[1]],
       zoom: zoomLevel,
-      parklets: [],
       error: '',
       displayModal: false,
     };
 
     this.toggleModal = this.toggleModal.bind(this);
-  }
-
-  componentDidMount() {
-    fetchParklets(PARKLETS_ENDPOINT)
-      .then(data => this.setState({ parklets: data }))
-      .catch(err => this.setState({ error: err }));
   }
 
   toggleModal(clickedMarkerData) {
@@ -35,8 +28,11 @@ class MapView extends Component {
 
   render() {
     const {
-      center, zoom, parklets, error, displayModal,
+      center, zoom, error, displayModal,
     } = this.state;
+
+    const { parklets } = this.props;
+
     return (
       <div>
         <Map center={center} zoom={zoom} >
