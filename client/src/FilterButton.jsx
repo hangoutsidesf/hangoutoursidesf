@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 
 const getType = (type) => {
   switch (type) {
-    case 'address':
-      return 'Enter address';
     case 'open':
       return 'Open now';
     case 'food':
