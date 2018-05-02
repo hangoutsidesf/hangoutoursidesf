@@ -12,7 +12,6 @@ class MapView extends Component {
     this.state = {
       center: [SFGeo[0], SFGeo[1]],
       zoom: zoomLevel,
-      error: '',
       displayModal: false,
     };
 
@@ -25,11 +24,8 @@ class MapView extends Component {
   }
 
   render() {
-    const {
-      center, zoom, error, displayModal,
-    } = this.state;
-
-    const { parklets } = this.props;
+    const { center, zoom, displayModal } = this.state;
+    const { parklets, error } = this.props;
 
     return (
       <div>
@@ -47,6 +43,7 @@ class MapView extends Component {
 }
 
 MapView.propTypes = {
+  error: PropTypes.string.isRequired,
   parklets: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string,
     position: PropTypes.arrayOf(PropTypes.number),
