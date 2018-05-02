@@ -37,7 +37,6 @@
 /*
 	All designs for the buttons are here
 */
-
 .btn {
   display: block;
   width: 100%;
@@ -51,19 +50,15 @@
   border-style: solid;
   border-width: 2px;
   border-color: #10b535;
-  -webkit-transition-duration: 300ms;
-  -o-transition-duration: 300ms;
   transition-duration: 300ms;
 }
 
-.btn-dark,
-.btn-dark-outline:hover {
+.btn-dark {
   background: #10b535;
   color: whitesmoke;
 }
 
-.btn-dark-outline,
-.btn-dark:hover {
+.btn-dark-outline {
   background: whitesmoke;
   color: #10b535;
 }
@@ -73,16 +68,13 @@
     font-size: 0;
     position: absolute;
   }
-
   .interface {
     padding: 40px 30px;
   }
-
   .bottom-question {
     padding: 0;
     margin: 0;
   }
-
   /*
     mobile and web view responds differently to px size.
     this is based on device size not window size.
@@ -92,21 +84,21 @@
     for web desktop with the window being "mobile" sized due to the fact
     that it shares alot of traits with the mobile css (plus it saves extra
     code from being written)
-  */ }
+  */
+}
 
 @media screen and (max-width: 1280px) and (orientation: portrait) {
   /* for mobile */
   #home {
     grid-template-rows: auto 30vh;
   }
-
   .btn {
     height: 90px;
   }
-
   /* for web */
   #home {
-    grid-template-areas: 'm' 's'; }
+    grid-template-areas: "m" "s";
+  }
   .interface {
     grid-template-columns: repeat(8, 12.5%);
     grid-template-areas: "a a a a a a a a" ". . . . . . . ." "o o . f f . w w" ". . . . . . . ." "i i i i i i i i";
@@ -116,7 +108,8 @@
 @media screen and (max-width: 1280px) and (orientation: landscape) {
   #home {
     grid-template-columns: auto 400px;
-    grid-template-areas: 'm s'; }
+    grid-template-areas: "m s";
+  }
   .interface {
     grid-template-areas: "a" "." "." "." "o" "f" "w" "." "." "." "i";
   }
@@ -125,16 +118,18 @@
 /********************
 For desktop view
 *********************/
-
 @media screen and (min-width: 1280px) {
   #home {
     grid-template-columns: auto 450px;
-    grid-template-areas: 'm s'; }
+    grid-template-areas: 'm s';
+  }
   .interface {
     padding: 0 20px;
     grid-template-columns: 1fr;
     grid-gap: 20px;
-    grid-template-areas: '.' 'a' '.' '.' '.' 'o' 'f' 'w' '.' '.' 'c' '.' 'i'; } }
+    grid-template-areas: '.' 'a' '.' '.' '.' 'o' 'f' 'w' '.' '.' 'c' '.' 'i';
+  }
+}
 
 body {
   padding: 0;
@@ -154,10 +149,6 @@ body {
 .leaflet-container {
   height: 100%;
   width: 100%;
-}
-
-.customPopup {
-  display: none;
 }
 
 .interface {
