@@ -16,10 +16,27 @@ class App extends Component {
   }
 
   componentDidMount() {
+    // IMPORTANT: Until db is implemented, fake data will be used to generate flags
+    // for a parklet that is open, has coffee, or wifi by RNG, this will change for
+    // every refresh of the page
     fetchParklets(PARKLETS_ENDPOINT)
-      .then(data => this.setState({ activeParklets: data }))
+      .then((data) => {
+        this.faker(data);
+        this.setState({ activeParklets: data });
+      })
       .then(() => this.handleFilters())
       .catch(err => this.setState({ error: err }));
+  }
+
+  faker(data) {
+    const random = () => Math.random() > 0.5;
+
+    data.forEach((d) => {
+      const node = d;
+      node.wifi = random();
+      node.food = random();
+      node.open = random();
+    });
   }
 
   handleFilters() {
@@ -31,16 +48,21 @@ class App extends Component {
     const show = [];
     const hide = [];
 
-    console.log(activeParklets);
-
-    parklets.forEach(parklet => {
-      if (open.classList.contains('btn-dark-outline')) {
-        console.log('filter out closed places');
-      } else if (food.classList.contains('btn-dark-outline')) {
-        console.log('filter out places with no coffee');
-      } else if (wifi.classList.contains('btn-dark-outline')) {
-        console.log('filter out places with no wifi');
+    parklets.forEach((parklet) => {
+      if (!parklet.open && open.classList.contains('btn-dark-outline')) {
+        hide.push(parklet);
+      } else if (!parklet.food && food.classList.contains('btn-dark-outline')) {
+        hide.push(parklet);
+      } else if (!parklet.wifi && wifi.classList.contains('btn-dark-outline')) {
+        hide.push(parklet);
+      } else {
+        show.push(parklet);
       }
+    });
+
+    this.setState({
+      activeParklets: show,
+      hiddenParklets: hide,
     });
   }
 
