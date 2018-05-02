@@ -12,7 +12,10 @@ class App extends Component {
     this.state = {
       activeParklets: [],
       hiddenParklets: [],
+      error: '',
     };
+
+    this.handleFilters = this.handleFilters.bind(this);
   }
 
   componentDidMount() {
@@ -66,10 +69,12 @@ class App extends Component {
   }
 
   render() {
+    const { error, activeParklets } = this.state;
+
     return (
       <div id="home">
-        <MapView parklets={this.state.activeParklets} />
-        <Interface handleFilters={this.handleFilters.bind(this)} />
+        <MapView error={error} parklets={activeParklets} />
+        <Interface handleFilters={this.handleFilters} />
       </div>
     );
   }
