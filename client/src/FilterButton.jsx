@@ -23,7 +23,7 @@ const toggleFilter = (event, handler) => {
   // themselves, so if clicked, we recurse with the parent element being the button
   if (classList.contains('fas')) {
     const target = event.target.parentElement;
-    toggleFilter({ target });
+    toggleFilter({ target }, handler);
     return;
   } else if (classList.contains('btn-dark')) {
     classList.remove('btn-dark');
@@ -46,6 +46,7 @@ const FilterButton = props => (
 
 FilterButton.propTypes = {
   type: PropTypes.string,
+  handler: PropTypes.func.isRequired,
 };
 
 FilterButton.defaultProps = {
