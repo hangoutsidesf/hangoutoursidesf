@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { Map, TileLayer } from 'react-leaflet';
 import ReactModal from 'react-modal';
+import PropTypes from 'prop-types';
 
 import { tileSet, SFGeo, zoomLevel, mapAttribution } from '../mapconfig';
 import MarkerCollection from './markerCollection';
-import fetchParklets from '../utils/fetchParklets';
-
-const PARKLETS_ENDPOINT = 'https://data.sfgov.org/resource/6a7x-cttf.json';
 
 class MapView extends Component {
   constructor() {
@@ -47,5 +45,15 @@ class MapView extends Component {
     );
   }
 }
+
+MapView.propTypes = {
+  parklets: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string,
+    position: PropTypes.arrayOf(PropTypes.number),
+    wifi: PropTypes.bool,
+    food: PropTypes.bool,
+    open: PropTypes.bool,
+  })).isRequired,
+};
 
 export default MapView;

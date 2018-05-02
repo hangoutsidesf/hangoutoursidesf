@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import FilterButton from './FilterButton';
 
-const Interface = (props) => (
+const Interface = props => (
   <div className="interface">
     <FilterButton type="address" />
     <FilterButton handler={props.handleFilters} type="open" />
@@ -17,5 +18,9 @@ const Interface = (props) => (
     <h2 className="bottom-question">Idea or Issue?</h2>
   </div>
 );
+
+Interface.propTypes = {
+  handleFilters: PropTypes.func.isRequired,
+};
 
 export default Interface;
