@@ -4,7 +4,7 @@ import FilterButton from './FilterButton';
 
 const Interface = props => (
   <div className="interface">
-    <FilterButton type="address" />
+    <button className="btn btn-dark address">Enter Address</button>
     <FilterButton handler={props.handleFilters} type="open" />
     <FilterButton handler={props.handleFilters} type="food" />
     <FilterButton handler={props.handleFilters} type="wifi" />
