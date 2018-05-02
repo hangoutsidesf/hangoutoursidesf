@@ -21,22 +21,21 @@ class App extends Component {
     // every refresh of the page
     fetchParklets(PARKLETS_ENDPOINT)
       .then((data) => {
-        this.faker(data);
+        // *******FAKE DATA GENERATOR************
+        const random = () => Math.random() > 0.5;
+
+        data.forEach((d) => {
+          const node = d;
+          node.wifi = random();
+          node.food = random();
+          node.open = random();
+        });
+        // remove above function once graphQL db is configured
+
         this.setState({ activeParklets: data });
       })
       .then(() => this.handleFilters())
       .catch(err => this.setState({ error: err }));
-  }
-
-  faker(data) {
-    const random = () => Math.random() > 0.5;
-
-    data.forEach((d) => {
-      const node = d;
-      node.wifi = random();
-      node.food = random();
-      node.open = random();
-    });
   }
 
   handleFilters() {
