@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import MapView from './mapView';
 import Interface from './Interface';
 import fetchParklets from '../utils/fetchParklets';
+import fakeFilterFlags from '../../fakeFilterFlags';
 
 const PARKLETS_ENDPOINT = 'https://data.sfgov.org/resource/6a7x-cttf.json';
 
@@ -23,21 +24,9 @@ class App extends Component {
     // for a parklet that is open, has coffee, or wifi by RNG, this will change for
     // every refresh of the page
     fetchParklets(PARKLETS_ENDPOINT)
-      .then((data) => {
-        // *******FAKE DATA GENERATOR************
-        const random = () => Math.random() > 0.5;
-
-        data.forEach((d) => {
-          const node = d;
-          node.wifi = random();
-          node.food = random();
-          node.open = random();
-        });
-        // remove above function once graphQL db is configured
-
-        this.setState({ activeParklets: data });
-      })
-      .then(() => this.handleFilters())
+      .then(fakeFilterFlags)
+      .then(data => this.setState({ activeParklets: data }))
+      .then(this.handleFilters)
       .catch(err => this.setState({ error: err }));
   }
 
