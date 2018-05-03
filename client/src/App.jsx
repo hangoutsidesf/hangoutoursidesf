@@ -61,12 +61,23 @@ class App extends Component {
   }
 
   render() {
-    const { error, activeParklets } = this.state;
+    const {
+      error,
+      activeParklets,
+      openFilter,
+      foodFilter,
+      wifiFilter,
+    } = this.state;
 
     return (
       <div id="home">
         <MapView error={error} parklets={activeParklets} />
-        <Interface handleFilters={this.handleFilters} />
+        <Interface
+          handleFilters={this.handleFilters}
+          openFilter={openFilter}
+          foodFilter={foodFilter}
+          wifiFilter={wifiFilter}
+        />
       </div>
     );
   }
