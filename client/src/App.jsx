@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import MapView from './mapView';
 import Interface from './Interface';
 import fetchParklets from '../utils/fetchParklets';
-import fakeFilterFlags from '../../fakeFilterFlags';
+import fakeFilterFlags from '../utils/fakeFilterFlags';
 
 const PARKLETS_ENDPOINT = 'https://data.sfgov.org/resource/6a7x-cttf.json';
 
