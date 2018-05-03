@@ -32,33 +32,31 @@ class App extends Component {
       .catch(err => this.setState({ error: err }));
   }
 
+  refreshParkletDisplay(parklets) {
+    const { openFilter, foodFilter, wifiFilter } = this.state;
+    const hasFilter = openFilter || foodFilter || wifiFilter;
+    const activeParklets = [];
+    const hiddenParklets = [];
+
+    parklets.forEach((parklet) => {
+      const { open, food, wifi } = parklet;
+
+      if ((!open && openFilter) || (!food && foodFilter) || (!wifi && wifiFilter)) {
+        hiddenParklets.push(parklet);
+      } else {
+        activeParklets.push(parklet);
+      }
+    });
+
+    this.setState({ activeParklets, hiddenParklets });
+  }
+
   handleFilters(type) {
     const { activeParklets, hiddenParklets } = this.state;
-
     const parklets = [...activeParklets, ...hiddenParklets];
-    const show = [];
-    const hide = [];
 
     this.setState({ [type]: !this.state[type] }, () => {
-      const { openFilter, foodFilter, wifiFilter } = this.state;
-
-      parklets.forEach((parklet) => {
-        if (!parklet.open && openFilter) {
-          console.log(parklet);
-          hide.push(parklet);
-        } else if (!parklet.food && foodFilter) {
-          hide.push(parklet);
-        } else if (!parklet.wifi && wifiFilter) {
-          hide.push(parklet);
-        } else {
-          show.push(parklet);
-        }
-      });
-
-      this.setState({
-        activeParklets: show,
-        hiddenParklets: hide,
-      });
+      this.refreshParkletDisplay(parklets);
     });
   }
 
