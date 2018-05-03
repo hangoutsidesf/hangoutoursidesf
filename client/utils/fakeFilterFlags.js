@@ -1,4 +1,4 @@
-module.exports = (data) => {
+const fakeFilterFlags = (data) => {
   // *******FAKE DATA GENERATOR************
   const random = () => Math.random() > 0.5;
 
@@ -12,3 +12,5 @@ module.exports = (data) => {
 
   return data;
 };
+
+export default fakeFilterFlags;
