@@ -5,9 +5,9 @@ import FilterButton from './FilterButton';
 const Interface = props => (
   <div className="interface">
     <button className="btn btn-dark address">Enter Address</button>
-    <FilterButton handler={props.handleFilters} type="open" />
-    <FilterButton handler={props.handleFilters} type="food" />
-    <FilterButton handler={props.handleFilters} type="wifi" />
+    <FilterButton handler={props.handleFilters} type="open" filter={props.openFilter} />
+    <FilterButton handler={props.handleFilters} type="food" filter={props.foodFilter} />
+    <FilterButton handler={props.handleFilters} type="wifi" filter={props.wifiFilter} />
     <div className="content">
       <h1>What&apos;s a parklet?</h1>
       <p>
@@ -21,6 +21,9 @@ const Interface = props => (
 
 Interface.propTypes = {
   handleFilters: PropTypes.func.isRequired,
+  openFilter: PropTypes.bool.isRequired,
+  foodFilter: PropTypes.bool.isRequired,
+  wifiFilter: PropTypes.bool.isRequired,
 };
 
 export default Interface;
