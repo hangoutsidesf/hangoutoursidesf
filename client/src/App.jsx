@@ -14,6 +14,9 @@ class App extends Component {
       activeParklets: [],
       hiddenParklets: [],
       error: '',
+      openFilter: false,
+      foodFilter: false,
+      wifiFilter: false,
     };
 
     this.handleFilters = this.handleFilters.bind(this);
@@ -26,34 +29,36 @@ class App extends Component {
     fetchParklets(PARKLETS_ENDPOINT)
       .then(fakeFilterFlags)
       .then(data => this.setState({ activeParklets: data }))
-      .then(this.handleFilters)
       .catch(err => this.setState({ error: err }));
   }
 
-  handleFilters() {
-    const open = document.querySelector('.open');
-    const food = document.querySelector('.food');
-    const wifi = document.querySelector('.wifi');
+  handleFilters(type) {
     const { activeParklets, hiddenParklets } = this.state;
+
     const parklets = [...activeParklets, ...hiddenParklets];
     const show = [];
     const hide = [];
 
-    parklets.forEach((parklet) => {
-      if (!parklet.open && open.classList.contains('btn-dark-outline')) {
-        hide.push(parklet);
-      } else if (!parklet.food && food.classList.contains('btn-dark-outline')) {
-        hide.push(parklet);
-      } else if (!parklet.wifi && wifi.classList.contains('btn-dark-outline')) {
-        hide.push(parklet);
-      } else {
-        show.push(parklet);
-      }
-    });
+    this.setState({ [type]: !this.state[type] }, () => {
+      const { openFilter, foodFilter, wifiFilter } = this.state;
 
-    this.setState({
-      activeParklets: show,
-      hiddenParklets: hide,
+      parklets.forEach((parklet) => {
+        if (!parklet.open && openFilter) {
+          console.log(parklet);
+          hide.push(parklet);
+        } else if (!parklet.food && foodFilter) {
+          hide.push(parklet);
+        } else if (!parklet.wifi && wifiFilter) {
+          hide.push(parklet);
+        } else {
+          show.push(parklet);
+        }
+      });
+
+      this.setState({
+        activeParklets: show,
+        hiddenParklets: hide,
+      });
     });
   }
 

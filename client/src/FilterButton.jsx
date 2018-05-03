@@ -14,14 +14,14 @@ const getType = (type) => {
   }
 };
 
-const toggleFilter = (event, handler) => {
+const toggleFilter = (event, handler, type) => {
   const { classList } = event.target;
 
   // <i> elements seem to work like buttons, and do not reference the buttons
   // themselves, so if clicked, we recurse with the parent element being the button
   if (classList.contains('fas')) {
     const target = event.target.parentElement;
-    toggleFilter({ target }, handler);
+    toggleFilter({ target }, handler, type);
     return;
   } else if (classList.contains('btn-dark')) {
     classList.remove('btn-dark');
@@ -31,13 +31,14 @@ const toggleFilter = (event, handler) => {
     classList.add('btn-dark');
   }
 
-  if (handler) {
-    handler();
-  }
+  handler(type + 'Filter');
 };
 
 const FilterButton = props => (
-  <button onClick={event => toggleFilter(event, props.handler)} className={`btn btn-dark ${props.type}`}>
+  <button
+    onClick={event => toggleFilter(event, props.handler, props.type)}
+    className={`btn btn-dark ${props.type}`}
+  >
     {getType(props.type)}
   </button>
 );
