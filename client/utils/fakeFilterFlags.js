@@ -19,6 +19,10 @@ const fakeFilterFlags = (data) => {
     node.open = true;
   });
 
+  data[0].wifi = true;
+  data[0].food = true;
+  data[0].open = true;
+
   return data;
 };
 
