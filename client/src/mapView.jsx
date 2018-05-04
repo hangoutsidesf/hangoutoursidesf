@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { tileSet, SFGeo, zoomLevel, mapAttribution } from '../mapconfig';
 import MarkerCollection from './markerCollection';
 
+
 class MapView extends Component {
   constructor() {
     super();
@@ -43,14 +44,19 @@ class MapView extends Component {
 }
 
 MapView.propTypes = {
-  error: PropTypes.string.isRequired,
+  error: PropTypes.string,
   parklets: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string,
     position: PropTypes.arrayOf(PropTypes.number),
     wifi: PropTypes.bool,
     food: PropTypes.bool,
     open: PropTypes.bool,
-  })).isRequired,
+  })),
 };
+
+MapView.defaultProps = {
+  error: '',
+  parklets: [],
+}
 
 export default MapView;
