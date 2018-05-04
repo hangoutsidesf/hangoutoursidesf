@@ -1,14 +1,23 @@
 const fakeFilterFlags = (data) => {
   // *******FAKE DATA GENERATOR************
-  const random = () => Math.random() > 0.5;
-
-  data.forEach((d) => {
+  data.slice(0, Math.floor(data.length / 3)).forEach((d) => {
     const node = d;
-    node.wifi = random();
-    node.food = random();
-    node.open = random();
+    node.wifi = true;
+    node.food = true;
+    node.open = false;
   });
-  // remove above function once graphQL db is configured
+  data.slice(Math.floor(data.length / 3), Math.floor((data.length * 2) / 3)).forEach((d) => {
+    const node = d;
+    node.wifi = false;
+    node.food = true;
+    node.open = true;
+  });
+  data.slice(Math.floor((data.length * 2) / 3)).forEach((d) => {
+    const node = d;
+    node.wifi = true;
+    node.food = false;
+    node.open = true;
+  });
 
   return data;
 };
