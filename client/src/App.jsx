@@ -28,11 +28,7 @@ class App extends Component {
     // every refresh of the page
     fetchParklets(PARKLETS_ENDPOINT)
       .then(fakeFilterFlags)
-      .then(data => {
-        this.setState({ activeParklets: data }, () => {
-          this.refreshParkletDisplay(data);
-        });
-      })
+      .then(data => this.refreshParkletDisplay(data))
       .catch(err => this.setState({ error: err }));
   }
 
