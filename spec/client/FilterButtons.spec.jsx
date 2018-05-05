@@ -8,14 +8,6 @@ import App from '../../client/src/App';
 
 const url = 'https://data.sfgov.org/resource/6a7x-cttf.json';
 
-describe('App component', () => {
-  xtest('App should match snapshot', () => {
-    const component = renderer.create(<App />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-});
-
 describe('Filter Buttons', () => {
   fetchMock.getOnce(url, {
     status: 200,
@@ -82,7 +74,7 @@ describe('Filter Buttons', () => {
       .filter(parklet => parklet.wifi && parklet.open);
     expect(activeParklets).toHaveLength(wifiAndOpen.length);
   });
-  
+
   test('Only parklets with wifi, food, and open active with all filters on', () => {
     wrapper.instance().handleFilters('foodFilter');
     const { activeParklets, hiddenParklets } = wrapper.state();
