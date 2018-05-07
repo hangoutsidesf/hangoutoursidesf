@@ -1,56 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getType, filterClass } from '../utils/getFilterButtonType';
 
-const getType = (type) => {
-  switch (type) {
-    case 'open':
-      return 'Open now';
-    case 'food':
-      return <i className="fas fa-coffee" />;
-    case 'wifi':
-      return <i className="fas fa-wifi" />;
-    default:
-      return 'Invalid type';
-  }
-};
-
-const toggleFilter = (event, handler, type) => {
-  const { classList } = event.target;
-
-  if (classList.contains('fas')) {
-    const target = event.target.parentElement;
-    toggleFilter({ target }, handler, type);
-  } else {
-    handler(type + 'Filter');
-  }
-};
-
-const FilterButton = props => {
-  if(props.filter) {
-    return (
-      <button
-        onClick={event => toggleFilter(event, props.handler, props.type)}
-        className={`btn btn-dark-outline ${props.type}`}
-      >
-        {getType(props.type)}
-      </button>
-    )
-  } else {
-    return (
-      <button
-        onClick={event => toggleFilter(event, props.handler, props.type)}
-        className={`btn btn-dark ${props.type}`}
-      >
-        {getType(props.type)}
-      </button>
-    )
-  }
-};
+const FilterButton = ({ filter, type, handler }) => (
+  <button
+    onClick={() => handler(type + 'Filter')}
+    className={`btn ${filterClass(filter)} ${type}`}
+  >
+    {getType(type)}
+  </button>
+);
 
 FilterButton.propTypes = {
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
   handler: PropTypes.func.isRequired,
   filter: PropTypes.bool.isRequired,
+};
+
+FilterButton.defaultProps = {
+  type: '',
 };
 
 export default FilterButton;
