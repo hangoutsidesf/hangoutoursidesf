@@ -38,21 +38,24 @@ class App extends Component {
 
   refreshParkletDisplay(parklets) {
     const { openFilter, foodFilter, wifiFilter } = this.state;
-    const hasFilter = openFilter || foodFilter || wifiFilter;
-    const activeParklets = [];
-    const hiddenParklets = [];
 
-    parklets.forEach((parklet) => {
+    const filteredParklets = parklets.reduce((acc, parklet) => {
       const { open, food, wifi } = parklet;
+      const { activeParklets, hiddenParklets } = acc;
 
       if ((!open && openFilter) || (!food && foodFilter) || (!wifi && wifiFilter)) {
         hiddenParklets.push(parklet);
       } else {
         activeParklets.push(parklet);
       }
-    });
 
-    this.setState({ activeParklets, hiddenParklets });
+      return acc;
+    },{
+      activeParklets: [],
+      hiddenParklets: [],
+    })
+
+    this.setState({...filteredParklets});
   }
 
   handleFilters(type) {
