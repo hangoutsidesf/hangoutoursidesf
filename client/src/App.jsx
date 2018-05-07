@@ -26,10 +26,14 @@ class App extends Component {
     // IMPORTANT: Until db is implemented, fake data will be used to generate flags
     // for a parklet that is open, has coffee, or wifi by RNG, this will change for
     // every refresh of the page
-    fetchParklets(PARKLETS_ENDPOINT)
-      .then(fakeFilterFlags)
-      .then(data => this.refreshParkletDisplay(data))
-      .catch(err => this.setState({ error: err }));
+    const { activeParklets, hiddenParklets } = this.state;
+
+    if(!activeParklets.length && !hiddenParklets.length) {
+      fetchParklets(PARKLETS_ENDPOINT)
+        .then(fakeFilterFlags)
+        .then(data => this.refreshParkletDisplay(data))
+        .catch(err => this.setState({ error: err }));
+    }
   }
 
   refreshParkletDisplay(parklets) {
