@@ -23,63 +23,55 @@ describe('Filter Buttons', () => {
 
   test('Only parklets with wifi active with only wifi filter on', () => {
     wrapper.instance().handleFilters('wifiFilter');
-    const { activeParklets, hiddenParklets } = wrapper.state();
-    const wifiOnly = [...activeParklets, ...hiddenParklets].filter(parklet => parklet.wifi);
+    const { activeParklets } = wrapper.state();
 
-    expect(activeParklets).toHaveLength(wifiOnly.length);
+    expect(activeParklets).toHaveLength(21);
     wrapper.instance().handleFilters('wifiFilter');
   });
   test('Only parklets with food available with only wifi filter on', () => {
     wrapper.instance().handleFilters('foodFilter');
-    const { activeParklets, hiddenParklets } = wrapper.state();
-    const foodOnly = [...activeParklets, ...hiddenParklets].filter(parklet => parklet.food);
+    const { activeParklets } = wrapper.state();
 
-    expect(activeParklets).toHaveLength(foodOnly.length);
+    expect(activeParklets).toHaveLength(21);
     wrapper.instance().handleFilters('foodFilter');
   });
 
   test('Only parklets that are open available with only open filter on', () => {
     wrapper.instance().handleFilters('openFilter');
-    const { activeParklets, hiddenParklets } = wrapper.state();
-    const openOnly = [...activeParklets, ...hiddenParklets].filter(parklet => parklet.open);
+    const { activeParklets } = wrapper.state();
 
-    expect(activeParklets).toHaveLength(openOnly.length);
+    expect(activeParklets).toHaveLength(23);
     wrapper.instance().handleFilters('openFilter');
   });
 
   test('Only parklets with wifi and food active with wifi and food filter on', () => {
     wrapper.instance().handleFilters('wifiFilter');
     wrapper.instance().handleFilters('foodFilter');
-    const { activeParklets, hiddenParklets } = wrapper.state();
-    const wifiAndFood = [...activeParklets, ...hiddenParklets]
-      .filter(parklet => parklet.wifi && parklet.food);
+    const { activeParklets } = wrapper.state();
 
-    expect(activeParklets).toHaveLength(wifiAndFood.length);
+    expect(activeParklets).toHaveLength(10);
     wrapper.instance().handleFilters('wifiFilter');
   });
 
   test('Only parklets with food and open active with food and open filter on', () => {
     wrapper.instance().handleFilters('openFilter');
-    const { activeParklets, hiddenParklets } = wrapper.state();
-    const openAndFood = [...activeParklets, ...hiddenParklets]
-      .filter(parklet => parklet.food && parklet.open);
-    expect(activeParklets).toHaveLength(openAndFood.length);
+    const { activeParklets } = wrapper.state();
+
+    expect(activeParklets).toHaveLength(12);
     wrapper.instance().handleFilters('foodFilter');
   });
 
   test('Only parklets with wifi and open active with food and open filter on', () => {
     wrapper.instance().handleFilters('wifiFilter');
-    const { activeParklets, hiddenParklets } = wrapper.state();
-    const wifiAndOpen = [...activeParklets, ...hiddenParklets]
-      .filter(parklet => parklet.wifi && parklet.open);
-    expect(activeParklets).toHaveLength(wifiAndOpen.length);
+    const { activeParklets } = wrapper.state();
+
+    expect(activeParklets).toHaveLength(12);
   });
 
   test('Only parklets with wifi, food, and open active with all filters on', () => {
     wrapper.instance().handleFilters('foodFilter');
-    const { activeParklets, hiddenParklets } = wrapper.state();
-    const allFilters = [...activeParklets, ...hiddenParklets]
-      .filter(parklet => parklet.wifi && parklet.open && parklet.food);
-    expect(activeParklets).toHaveLength(allFilters.length);
+    const { activeParklets } = wrapper.state();
+
+    expect(activeParklets).toHaveLength(1);
   });
 });
