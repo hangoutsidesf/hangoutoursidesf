@@ -7,7 +7,7 @@ import App from '../../client/src/App';
 import MapView from '../../client/src/mapView';
 import Marker from '../../client/src/marker';
 
-const url = 'https://data.sfgov.org/resource/6a7x-cttf.json';
+const url = '/parklets';
 
 describe('Map loads on screen properly', () => {
   fetchMock.getOnce(url, {

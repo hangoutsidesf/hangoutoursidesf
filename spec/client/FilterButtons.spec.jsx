@@ -6,7 +6,7 @@ import fetchMock from 'fetch-mock';
 import dummyData from '../../client/parklets.json';
 import App from '../../client/src/App';
 
-const url = 'https://data.sfgov.org/resource/6a7x-cttf.json';
+const url = '/parklets';
 
 describe('Filter Buttons', () => {
   fetchMock.getOnce(url, {

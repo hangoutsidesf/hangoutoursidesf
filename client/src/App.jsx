@@ -5,7 +5,7 @@ import Interface from './Interface';
 import fetchParklets from '../utils/fetchParklets';
 import fakeFilterFlags from '../utils/fakeFilterFlags';
 
-const PARKLETS_ENDPOINT = 'https://data.sfgov.org/resource/6a7x-cttf.json';
+const PARKLETS_ENDPOINT = '/parklets';
 
 class App extends Component {
   constructor() {
