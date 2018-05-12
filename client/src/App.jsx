@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import MapView from './mapView';
 import Interface from './Interface';
 import fetchParklets from '../utils/fetchParklets';
-import fakeFilterFlags from '../utils/fakeFilterFlags';
 
 const PARKLETS_ENDPOINT = '/parklets';
 
@@ -28,9 +27,8 @@ class App extends Component {
     // every refresh of the page
     const { activeParklets, hiddenParklets } = this.state;
 
-    if(!activeParklets.length && !hiddenParklets.length) {
+    if (!activeParklets.length && !hiddenParklets.length) {
       fetchParklets(PARKLETS_ENDPOINT)
-        .then(fakeFilterFlags)
         .then(data => this.refreshParkletDisplay(data))
         .catch(err => this.setState({ error: err }));
     }
@@ -50,12 +48,12 @@ class App extends Component {
       }
 
       return acc;
-    },{
+    }, {
       activeParklets: [],
       hiddenParklets: [],
-    })
+    });
 
-    this.setState({...filteredParklets});
+    this.setState({ ...filteredParklets });
   }
 
   handleFilters(type) {
