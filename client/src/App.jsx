@@ -29,8 +29,13 @@ class App extends Component {
 
     if (!activeParklets.length && !hiddenParklets.length) {
       fetchParklets(PARKLETS_ENDPOINT)
-        .then(data => this.refreshParkletDisplay(data))
-        .catch(err => this.setState({ error: err }));
+        .then((data) => {
+          if (data.error) {
+            throw new Error(data.error);
+          }
+          this.refreshParkletDisplay(data);
+        })
+        .catch(error => this.setState({ error }));
     }
   }
 

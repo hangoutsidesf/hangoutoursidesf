@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
   axios.get(PARKLETS_ENDPOINT)
     .then(resp => resp.data)
     .then(data => res.json(data))
-    .catch(console.log);
+    .catch(error => res.json({ error }));
 });
 
 export default router;
