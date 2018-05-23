@@ -3,10 +3,11 @@ import { shallow } from 'enzyme';
 import fetchMock from 'fetch-mock';
 
 import dummyData from '../../client/parklets.json';
+import App from '../../client/src/App';
 import MapView from '../../client/src/mapView';
 import Marker from '../../client/src/marker';
 
-const url = 'https://data.sfgov.org/resource/6a7x-cttf.json';
+const url = '/parklets';
 
 describe('Map loads on screen properly', () => {
   fetchMock.getOnce(url, {
@@ -39,14 +40,14 @@ describe('Marker data loads after fetch', () => {
     body: dummyData,
   });
 
-  const wrapper = shallow(<MapView />);
+  const wrapper = shallow(<App />);
   it('contains all parklets', () => {
-    const { parklets } = wrapper.state();
-    expect(parklets).toHaveLength(32);
+    const { activeParklets } = wrapper.state();
+    expect(activeParklets).toHaveLength(32);
   });
 
   it('corrects the coordinates from lon-lat to lat-lon', () => {
-    const firstParkletCoordinates = wrapper.state().parklets[0].position;
+    const firstParkletCoordinates = wrapper.state().activeParklets[0].position;
     expect(firstParkletCoordinates).toEqual([37.760648871591, -122.504335015934]);
   });
 
@@ -55,4 +56,3 @@ describe('Marker data loads after fetch', () => {
     expect(markerWrapper.props().icon).toBeDefined();
   });
 });
-

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { Map, TileLayer } from 'react-leaflet';
 import ReactModal from 'react-modal';
+import PropTypes from 'prop-types';
 
 import { tileSet, SFGeo, zoomLevel, mapAttribution } from '../mapconfig';
 import MarkerCollection from './markerCollection';
-import fetchParklets from '../utils/fetchParklets';
 
-const PARKLETS_ENDPOINT = 'https://data.sfgov.org/resource/6a7x-cttf.json';
 
 class MapView extends Component {
   constructor() {
@@ -14,18 +13,10 @@ class MapView extends Component {
     this.state = {
       center: [SFGeo[0], SFGeo[1]],
       zoom: zoomLevel,
-      parklets: [],
-      error: '',
       displayModal: false,
     };
 
     this.toggleModal = this.toggleModal.bind(this);
-  }
-
-  componentDidMount() {
-    fetchParklets(PARKLETS_ENDPOINT)
-      .then(data => this.setState({ parklets: data }))
-      .catch(err => this.setState({ error: err }));
   }
 
   toggleModal(clickedMarkerData) {
@@ -34,9 +25,9 @@ class MapView extends Component {
   }
 
   render() {
-    const {
-      center, zoom, parklets, error, displayModal,
-    } = this.state;
+    const { center, zoom, displayModal } = this.state;
+    const { parklets, error } = this.props;
+
     return (
       <div>
         <Map center={center} zoom={zoom} >
@@ -50,6 +41,22 @@ class MapView extends Component {
       </div>
     );
   }
+}
+
+MapView.propTypes = {
+  error: PropTypes.string,
+  parklets: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string,
+    position: PropTypes.arrayOf(PropTypes.number),
+    wifi: PropTypes.bool,
+    food: PropTypes.bool,
+    open: PropTypes.bool,
+  })),
+};
+
+MapView.defaultProps = {
+  error: '',
+  parklets: [],
 }
 
 export default MapView;
