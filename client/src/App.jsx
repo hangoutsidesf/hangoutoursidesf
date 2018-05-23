@@ -31,11 +31,11 @@ class App extends Component {
       fetchParklets(PARKLETS_ENDPOINT)
         .then((data) => {
           if (data.error) {
-            throw new Error(data.error);
+            this.setState({ error: data.error });
+          } else {
+            this.refreshParkletDisplay(data);
           }
-          this.refreshParkletDisplay(data);
-        })
-        .catch(error => this.setState({ error }));
+        });
     }
   }
 
